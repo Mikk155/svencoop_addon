@@ -8,13 +8,6 @@
         2 : "Energy (armor)"
         3 : "Radiation (gauss ammo)"
     ]
-    rendercolor(choices) : "Crystal color" : 0 255 0 =
-    [
-        255 0 0 : "Electricity (red)"
-        0 255 0 : "Water (blue)"
-        255 255 0 : "Energy (orange)"
-        0 0 255 : "Radiation (green)"
-    ]
     radius(string) : "Entity radius" : "128"
     dmg(string) : "Damage per second" : "1"
     spawnflags(flags) =

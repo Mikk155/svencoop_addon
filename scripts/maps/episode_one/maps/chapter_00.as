@@ -1,27 +1,31 @@
-// Multi-Language script/plugin
+// func_autosave
+#include "../entity/func_autosave"
+
+// BMS-like recharge crystals
+#include "../entity/env_crystal"
+
+// Multi-Language game_text entity.
 #include "../../multi_language/multi_language"
 
 // Anti-Rush entity
-#include "../entity/trigger_once_mp"
-#include "../entity/func_fakewall"
-
-// func_autosave
-#include "../entity/func_autosave"
+#include "../entity/anti_rush"
 
 // HLSP AMMUNITION
 #include "../misc/ammo_individual"
 
 void MapInit()
 {
-	// Multi-Language script/plugin
+	// func_autosave
+	RegisterTriggerPlayerSaveFunc();
+	
+	// BMS-like recharge crystals
+	RegisterEnvCrystal();
+	
+	// Multi-Language entity.
 	MultiLanguageInit();
 	
 	// Anti-Rush entity
-	RegisterTriggerOnceMpEntity();
-	RegisterFakeWall();
-	
-	// func_autosave
-	RegisterTriggerPlayerSaveFunc();
+	RegisterAntiRushEntity();
 	
 	// HLSP AMMUNITION
 	RegisterAmmoIndividual();
@@ -29,7 +33,7 @@ void MapInit()
 
 void MapActivate()
 {
-	// Multi-Language script/plugin
+	// Multi-Language entity.
 	MultiLanguageActivate();
 	
 	// HLSP AMMUNITION

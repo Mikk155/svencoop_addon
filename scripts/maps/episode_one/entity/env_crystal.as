@@ -1,12 +1,30 @@
-enum env_crystal_flag
-{
-    SF_START_OFF = 1 << 0
-}
+/*
+	Black-mesa source inspired recharge crystals
+	keyvalue "type" define what the entity will do.
+	0 = damage player
+	1 = heal player
+	2 = increase player armor
+	3 = give gauss/egon ammo
+	
+	-todo
+		the beam color will be also defined by "type"
+		monsters spawnflag.
+		start off spawnflag
+		fade effect in playerPos
+	
+	-not really intended.
+		Sprite effect in PlayerPos
+		custom sound
+		custom sprite beam
+		
+*/
 
 class env_crystal : ScriptBaseEntity
 {
     private int m_ilRadius = 128;
     private int m_ilType = 0;
+    private int m_ilValue = 1;
+    private CBeam@ pBorderBeam;
 
 	bool KeyValue( const string& in szKey, const string& in szValue ) 
 	{
@@ -20,6 +38,11 @@ class env_crystal : ScriptBaseEntity
             m_ilType= atoi( szValue );
             return true;
         }
+        else if( szKey == "value" )
+        {
+            m_ilValue= atoi( szValue );
+            return true;
+        }
         else 
             return BaseClass.KeyValue( szKey, szValue );
     }
@@ -28,6 +51,9 @@ class env_crystal : ScriptBaseEntity
     {
         g_Game.PrecacheModel( "sprites/laserbeam.spr" );
         g_Game.PrecacheGeneric( "sprites/laserbeam.spr" );
+
+		g_SoundSystem.PrecacheSound( "weapons/shock_fire.wav" );
+		g_Game.PrecacheGeneric( "sound/weapons/shock_fire.wav" );
 
         BaseClass.Precache();
     }
@@ -40,23 +66,10 @@ class env_crystal : ScriptBaseEntity
 
 		g_EntityFuncs.SetOrigin( self, self.pev.origin );
 
-
-        if( !self.pev.SpawnFlagBitSet( SF_START_OFF ) )
-		{
-			SetThink( ThinkFunction( this.FindEntity ) );
-			self.pev.nextthink = g_Engine.time + 0.1f;
-		}
+		SetThink( ThinkFunction( this.FindEntity ) );
+        self.pev.nextthink = g_Engine.time + 0.1f;
 
         BaseClass.Spawn();
-	}
-
-    void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float value)
-    {
-        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) )
-		{	
-			SetThink( ThinkFunction( this.FindEntity ) );
-			self.pev.nextthink = g_Engine.time + 0.1f;
-		}
 	}
 
     void FindEntity()
@@ -73,22 +86,22 @@ class env_crystal : ScriptBaseEntity
                 if( pPlayer.pev.health >= 0 && m_ilType == 0 )
                 {
                     Beam( pPlayer );
-                    pPlayer.TakeDamage( self.pev, self.pev, self.pev.dmg * 1.2, DMG_SHOCK | DMG_RADIATION );
+                    pPlayer.TakeDamage( self.pev, self.pev, m_ilValue * 1.2, DMG_SHOCK | DMG_RADIATION );
                 }
                 else if( pPlayer.pev.health < pPlayer.pev.max_health && m_ilType == 1 )
                 {
                     Beam( pPlayer );
-                    pPlayer.pev.health = pPlayer.pev.health + self.pev.dmg;
+                    pPlayer.pev.health = pPlayer.pev.health + m_ilValue;
                 }
                 else if( pPlayer.pev.armorvalue < pPlayer.pev.armortype && m_ilType == 2 )
                 {
                     Beam( pPlayer );
-                    pPlayer.pev.armorvalue = pPlayer.pev.armorvalue + self.pev.dmg;
+                    pPlayer.pev.armorvalue = pPlayer.pev.armorvalue + m_ilValue;
                 }
                 else if( pPlayer.m_rgAmmo( g_PlayerFuncs.GetAmmoIndex( "uranium" ) ) < pPlayer.GetMaxAmmo( "uranium" ) && m_ilType == 3 )
                 {                  
                     Beam( pPlayer );
-                    pPlayer.GiveAmmo( int(self.pev.dmg), "uranium", pPlayer.GetMaxAmmo( "uranium" ) );
+                    pPlayer.GiveAmmo( m_ilValue, "uranium", pPlayer.GetMaxAmmo( "uranium" ) );
                 }
             }
             else
@@ -108,11 +121,10 @@ class env_crystal : ScriptBaseEntity
 
     void Beam( CBaseEntity@ pPlayer )
     {
-        CBeam@ pBorderBeam = g_EntityFuncs.CreateBeam( "sprites/laserbeam.spr", 30 );
+        @pBorderBeam = g_EntityFuncs.CreateBeam( "sprites/laserbeam.spr", 30 );
         pBorderBeam.SetFlags( BEAM_POINTS );
         pBorderBeam.SetStartPos( self.pev.origin );
         pBorderBeam.SetEndPos( pPlayer.Center() );
-        pBorderBeam.SetFlags( BEAM_FSHADEOUT );
         pBorderBeam.SetBrightness( 128 );
         pBorderBeam.SetScrollRate( 100 );
         pBorderBeam.LiveForTime( 0.10 );
