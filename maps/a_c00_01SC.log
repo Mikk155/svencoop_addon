@@ -1,0 +1,213 @@
+hlcsg v4.3-VLV34-SC5.25 64-bit (Jan  1 2022)
+Zoner's Half-Life Compilation Tools -- Custom build for Sven Co-op 5.25
+Based on code modifications by Vluzacn (VLV34)
+Based on code modifications by Sean "Zoner" Cavanaugh (4.3)
+Based on Valve's version, modified with permission.
+
+A full list of contributors can be found at http://zhlt.info/credits.html
+
+For help and support please use the official discord channel: https://discord.gg/yZxs6nJs3n
+-----  BEGIN  hlcsg -----
+Command line: "C:/Program Files (x86)/Steam/steamapps/common/Sven Co-op SDK/mapping/compilers/SC-CSG_x64.exe" "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+Arguments: "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+Entering C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC.map
+
+-= Current hlcsg Settings =-
+Setting                        |  Map value            |  Default value        
+-------------------------------|-----------------------|-----------------------
+Verbose                         [                 off ] [                 off ]
+Log                             [                  on ] [                  on ]
+Developer mode                  [                   0 ] [                   0 ]
+Estimate times                  [                 off ] [                 off ]
+Statistics chart                [                 off ] [                 off ]
+CPU thread count                [                   2 ] [              Varies ]
+CPU process priority            [              Normal ] [              Normal ]
+Texture data memory limit       [            67108864 ] [            67108864 ]
+Lighting data memory limit      [            67108864 ] [            67108864 ]
+
+Entities only                   [                 off ] [                 off ]
+WAD textures                    [                  on ] [                  on ]
+Clipping hull generation        [                  on ] [                 off ]
+Clipping economy mode           [                 off ] [                 off ]
+Clipping hull type              [              Simple ] [              Simple ]
+Custom hull file                [                None ] [                None ]
+Sky brush clipping              [                  on ] [                  on ]
+Minimum surface area            [               0.000 ] [               0.000 ]
+Brush union threshold           [               0.000 ] [               0.000 ]
+NULL texture substitutions file [                None ] [                None ]
+WAD configuration file          [                None ] [                None ]
+WAD configuration name          [                None ] [                None ]
+WAD auto-detect                 [                 off ] [                  on ]
+Strip null texture faces        [                  on ] [                  on ]
+Strip trigger texture faces     [                  on ] [                  on ]
+Optimize engine light entities  [                  on ] [                  on ]
+Convert game_text ANSI to UTF-8 [                  on ] [                  on ]
+Scale the world                 [                None ] [                None ]
+
+
+Using mapfile wad configuration
+Wadinclude list :
+[zhlt.wad]
+
+CreateBrush:
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 348
+
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 352
+
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 381
+
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 501
+
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 500
+
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 502
+
+Warning: Illegal Brush (edge without opposite face): Entity 0, Brush 523
+
+ (6.50 seconds)
+CSGBrush:
+ (0.90 seconds)
+
+added 8 additional animating textures.
+Including Wadfile: /Program Files (x86)/Steam/steamapps/common/Sven Co-op/svencoop/zhlt.wad
+ - Contains 2 used textures, 4.76 percent of map (19 textures in wad)
+Using Wadfile: /Program Files (x86)/Steam/steamapps/common/Sven Co-op/svencoop_addon/epone.wad
+ - Contains 40 used textures, 95.24 percent of map (372 textures in wad)
+
+Wad files required to run the map: "epone.wad;"
+Texture usage is at 2.71 mb (of 64.00 mb MAX)
+8.48 seconds elapsed
+
+-----   END   hlcsg -----
+
+
+
+hlbsp v4.3-VLV34-SC5.25 64-bit (Jan  1 2022)
+Zoner's Half-Life Compilation Tools -- Custom build for Sven Co-op 5.25
+Based on code modifications by Vluzacn (VLV34)
+Based on code modifications by Sean "Zoner" Cavanaugh (4.3)
+Based on Valve's version, modified with permission.
+
+A full list of contributors can be found at http://zhlt.info/credits.html
+
+For help and support please use the official discord channel: https://discord.gg/yZxs6nJs3n
+-----  BEGIN  hlbsp -----
+Command line: "C:/Program Files (x86)/Steam/steamapps/common/Sven Co-op SDK/mapping/compilers/SC-BSP_x64.exe" "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+Arguments: "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+
+-= Current hlbsp Settings =-
+Setting                        |  Map value            |  Default value        
+-------------------------------|-----------------------|-----------------------
+Verbose                         [                 off ] [                 off ]
+Log                             [                  on ] [                  on ]
+Developer mode                  [                   0 ] [                   0 ]
+Estimate times                  [                 off ] [                 off ]
+Statistics chart                [                 off ] [                 off ]
+CPU thread count                [                   2 ] [              Varies ]
+CPU process priority            [              Normal ] [              Normal ]
+Texture data memory limit       [            67108864 ] [            67108864 ]
+Lighting data memory limit      [            67108864 ] [            67108864 ]
+
+Leak only mode                  [                 off ] [                 off ]
+Face subdivide size             [                 528 ] [                 528 ]
+Maximum portal node size        [                1024 ] [                1024 ]
+Don't break edges on T-juncs?   [                 off ] [                 off ]
+Don't smooth brinks?            [                 off ] [                 off ]
+Don't process the clipping hull?[                 off ] [                 off ]
+Don't fill outside?             [                 off ] [                 off ]
+Don't fill empty spaces?        [                 off ] [                 off ]
+Don't optimize planes?          [                 off ] [                 off ]
+Don't optimize clip nodes?      [                 off ] [                 off ]
+Don't strip NULL textures?      [                 off ] [                 off ]
+Don't generate hull 2?          [                 off ] [                 off ]
+Show portal boundaries in PTS?  [                 off ] [                 off ]
+
+
+SolidBSP [hull 0] 500...1000...1500...2000...2500...3000...3232 (0.54 seconds)
+Warning: === LEAK in hull 0 ===
+Entity ambient_generic @ (3040,-1672,-584)
+Error: 
+  A LEAK is a hole in the map, where the inside of it is exposed to the
+(unwanted) outside region.  The entity listed in the error is just a helpful
+indication of where the beginning of the leak pointfile starts, so the
+beginning of the line can be quickly found and traced to until reaching the
+outside. Unless this entity is accidentally on the outside of the map, it
+probably should not be deleted.  Some complex rotating objects entities need
+their origins outside the map.  To deal with these, just enclose the origin
+brush with a solid world brush
+
+Leak pointfile generated
+
+SolidBSP [hull 1] 500...1000...1500...2000...2500...3000...3135 (0.42 seconds)
+Warning: === LEAK in hull 1 ===
+Entity ambient_generic @ (3040,-1672,-584)
+SolidBSP [hull 2] 500...1000...1500...2000...2500...3000...3060 (0.39 seconds)
+Warning: === LEAK in hull 2 ===
+Entity ambient_generic @ (3040,-1672,-584)
+SolidBSP [hull 3] 500...1000...1500...2000...2500...3000...3108 (0.42 seconds)
+Warning: === LEAK in hull 3 ===
+Entity ambient_generic @ (3040,-1672,-584)
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (2427,-520,-1198)-(2594,-352,-1037) in hull 1 of model 118 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (2411,-536,-1202)-(2578,-336,-1041) in hull 2 of model 118 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (2427,-520,-1216)-(2594,-352,-1055) in hull 3 of model 118 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-96,-184,-1648)-(-48,-111,-1635) in hull 1 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-96,-184,-1648)-(-48,-111,-1635) in hull 1 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-145,-171,-1780)-(-102,-97,-1768) in hull 1 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-80,-200,-1650)-(-37,-80,-1639) in hull 2 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-162,-200,-2732)-(3420,80000,-1764) in hull 2 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-96,-184,-1666)-(-48,-111,-1653) in hull 3 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-96,-184,-1666)-(-48,-111,-1653) in hull 3 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Ambiguous leafnode content ( EMPTY and SOLID ) at (-145,-184,-1762)-(-102,-97,-1750) in hull 3 of model 119 (entity: classname "func_wall", origin "", targetname "")
+Warning: Empty solid entity: model 120 (entity: classname "func_train", origin "-1024 0 -896", targetname "n_draw1")
+Warning: Empty solid entity: model 144 (entity: classname "func_train", origin "1024 -1536 -1024", targetname "n_draw2")
+Warning: Empty solid entity: model 167 (entity: classname "func_train", origin "1656 1440 -1024", targetname "n_draw3")
+Reduced 26172 clipnodes to 24646
+Reduced 1572 texinfos to 1264
+Reduced 42 texdatas to 41 (4076 bytes to 2920)
+Reduced 36908 planes to 14331
+FixBrinks:
+Increased 24646 clipnodes to 24907.
+9.17 seconds elapsed
+
+-----   END   hlbsp -----
+
+
+
+hlvis v4.3-VLV34-SC5.25 64-bit (Jan  1 2022)
+Zoner's Half-Life Compilation Tools -- Custom build for Sven Co-op 5.25
+Based on code modifications by Vluzacn (VLV34)
+Based on code modifications by Sean "Zoner" Cavanaugh (4.3)
+Based on Valve's version, modified with permission.
+
+A full list of contributors can be found at http://zhlt.info/credits.html
+
+For help and support please use the official discord channel: https://discord.gg/yZxs6nJs3n
+-----  BEGIN  hlvis -----
+Command line: "C:/Program Files (x86)/Steam/steamapps/common/Sven Co-op SDK/mapping/compilers/SC-VIS_x64.exe" -fast "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+Arguments: -fast "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+>> There was a problem compiling the map.
+>> Check the file C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC.log for the cause.
+
+-----   END   hlvis -----
+
+
+
+hlrad v4.3-VLV34-SC5.25 64-bit (Jan  1 2022)
+Zoner's Half-Life Compilation Tools -- Custom build for Sven Co-op 5.25
+Based on code modifications by Vluzacn (VLV34)
+Based on code modifications by Sean "Zoner" Cavanaugh (4.3)
+Based on Valve's version, modified with permission.
+
+A full list of contributors can be found at http://zhlt.info/credits.html
+
+For help and support please use the official discord channel: https://discord.gg/yZxs6nJs3n
+-----  BEGIN  hlrad -----
+Command line: "C:/Program Files (x86)/Steam/steamapps/common/Sven Co-op SDK/mapping/compilers/SC-RAD_x64.exe" "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+Arguments: "C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC" 
+>> There was a problem compiling the map.
+>> Check the file C:\Program Files (x86)\Steam\steamapps\common\Sven Co-op\svencoop_addon\maps\a_c00_01SC.log for the cause.
+
+-----   END   hlrad -----
+
+
+
