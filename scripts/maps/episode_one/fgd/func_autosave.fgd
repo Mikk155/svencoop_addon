@@ -1,4 +1,4 @@
-@SolidClass base(Targetname) = func_autosave : "Save player status. load when die"
+@SolidClass = func_autosave : "Save player status. load when die"
 [
     targetname(target_source) : "Name"
     PrimerSpawn(string) : "spawnvector case 1"

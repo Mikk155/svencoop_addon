@@ -1,20 +1,34 @@
-@BaseClass base(Mandatory) = Targetname
+@PointClass base(Ammo) studio("models/w_weaponbox.mdl") = weaponbox_individual : "weaponbox" 
+[
+    ammo_357_individual(string) : "357 clip"
+	ammo_556_individual : "5.56mm round box"
+	ammo_556clip_individual : "5.56mm M16 rifle magazine"
+	ammo_762_individual : "7.62mm sniper rifle magazine"
+	ammo_9mmAR_individual : "9mm assault rifle magazine"
+	ammo_9mmbox_individual : "9mm round box (big)"
+	ammo_9mmclip_individual : "9mm pistol magazine"
+	ammo_ARgrenades_individual : "M16's M203 grenades (x2)"
+	ammo_buckshot_individual : "Shotgun shell box"
+	ammo_crossbow_individual : "Crossbow bolt magazine"
+	ammo_gaussclip_individual : "Gauss/Gluon gun battery"
+	ammo_rpgclip_individual : "Rockets (x2)"
+	ammo_sporeclip_individual : "Spore"
+	ammo_uziclip_individual : "9mm Uzi magazine"
+	ammo_snarks_individual : "Squeak Grenade"
+	ammo_handgrenade_individual : "Hand Grenade"
+	ammo_medkit_individual : "Health kit AMMO"
+	item_healthkit_individual : "Health kit"
+	item_battery_individual : "HEV battery"
+]
+
+@BaseClass size(-8 -8 0, 8 8 16) color(4 128 240) = Ammo
 [
 	targetname(target_source) : "Name"
-]
-
-@BaseClass = Angles
-[
-	angles(string) : "Pitch Yaw Roll (X Y Z)" : "0 0 0"
-]
-
-@BaseClass = Target
-[
 	target(target_destination) : "Target"
-]
-
-@BaseClass size(0 0 0, 32 32 32) color(80 0 200) base(Targetname, Angles) = Pickup
-[
+	delay(string) : "Delay Before Trigger" : "0"
+	killtarget(target_destination) : "Kill Target"
+	angles(string) : "Pitch Yaw Roll (X Y Z)" : "0 0 0"
+	model(studio) : "Custom Model" : ""
 	spawnflags(Flags) =
 	[
 		128 : "TOUCH Only" : 0
@@ -33,33 +47,22 @@
 	]
 ]
 
-@BaseClass size(-8 -8 0, 8 8 16) color(4 128 240) base(Pickup) = Ammo
-[
-	model(studio) : "Custom Model" : ""
-]
-
-@BaseClass base(Target) = Targetx
-[
-	delay(string) : "Delay Before Trigger" : "0"
-	killtarget(target_destination) : "Kill Target"
-]
-
-@PointClass base(Ammo, Targetx) studio("models/w_357ammobox.mdl") = ammo_357_individual : "357 / desert eagle round box" []
-@PointClass base(Ammo, Targetx) studio("models/w_saw_clip.mdl") = ammo_556_individual : "5.56mm round box" []
-@PointClass base(Ammo, Targetx) studio("models/w_9mmARclip.mdl") = ammo_556clip_individual : "5.56mm M16 rifle magazine" []
-@PointClass base(Ammo, Targetx) studio("models/w_m40a1clip.mdl") = ammo_762_individual : "7.62mm sniper rifle magazine" []
-@PointClass base(Ammo, Targetx) studio("models/w_mp5_clip.mdl") = ammo_9mmAR_individual : "9mm assault rifle magazine" []
-@PointClass base(Ammo, Targetx) studio("models/w_chainammo.mdl") = ammo_9mmbox_individual : "9mm round box (big)" []
-@PointClass base(Ammo, Targetx) studio("models/w_9mmclip.mdl") = ammo_9mmclip_individual : "9mm pistol magazine" []
-@PointClass base(Ammo, Targetx) studio("models/w_argrenade.mdl") = ammo_ARgrenades_individual : "M16's M203 grenades (x2)" []
-@PointClass base(Ammo, Targetx) studio("models/w_shotbox.mdl") = ammo_buckshot_individual : "Shotgun shell box" []
-@PointClass base(Ammo, Targetx) studio("models/w_crossbow_clip.mdl") = ammo_crossbow_individual : "Crossbow bolt magazine" []
-@PointClass base(Ammo, Targetx) studio("models/w_gaussammo.mdl") = ammo_gaussclip_individual : "Gauss/Gluon gun battery" []
-@PointClass base(Ammo, Targetx) studio("models/w_rpgammo.mdl") = ammo_rpgclip_individual : "Rockets (x2)" []
-@PointClass base(Ammo, Targetx) studio("models/spore.mdl") = ammo_sporeclip_individual : "Spore" []
-@PointClass base(Ammo, Targetx) studio("models/w_uzi_clip.mdl") = ammo_uziclip_individual : "9mm Uzi magazine" []
-@PointClass base(Weapon, Targetx, ExclusiveHold) studio("models/w_sqknest.mdl") = ammo_snarks_individual : "Squeak Grenade" []
-@PointClass base(Weapon, Targetx, ExclusiveHold) studio("models/w_grenade.mdl") = ammo_handgrenade_individual : "Hand Grenade" []
-@PointClass size(-12 -12 0, 12 12 8) base(Targetx, Item) studio("models/w_medkit.mdl") = ammo_medkit_individual : "Health kit AMMO"
-@PointClass size(-12 -12 0, 12 12 8) base(Targetx, Item) studio("models/w_medkit.mdl") = item_healthkit_individual : "Health kit"
-@PointClass size(-4 -4 0, 4 4 16) base(Targetx, Item) studio("models/w_battery.mdl") = item_battery_individual : "HEV battery"
+@PointClass base(Ammo) studio("models/w_357ammobox.mdl") = ammo_357_individual : "357 / desert eagle round box" []
+@PointClass base(Ammo) studio("models/w_saw_clip.mdl") = ammo_556_individual : "5.56mm round box" []
+@PointClass base(Ammo) studio("models/w_9mmARclip.mdl") = ammo_556clip_individual : "5.56mm M16 rifle magazine" []
+@PointClass base(Ammo) studio("models/w_m40a1clip.mdl") = ammo_762_individual : "7.62mm sniper rifle magazine" []
+@PointClass base(Ammo) studio("models/w_mp5_clip.mdl") = ammo_9mmAR_individual : "9mm assault rifle magazine" []
+@PointClass base(Ammo) studio("models/w_chainammo.mdl") = ammo_9mmbox_individual : "9mm round box (big)" []
+@PointClass base(Ammo) studio("models/w_9mmclip.mdl") = ammo_9mmclip_individual : "9mm pistol magazine" []
+@PointClass base(Ammo) studio("models/w_argrenade.mdl") = ammo_ARgrenades_individual : "M16's M203 grenades (x2)" []
+@PointClass base(Ammo) studio("models/w_shotbox.mdl") = ammo_buckshot_individual : "Shotgun shell box" []
+@PointClass base(Ammo) studio("models/w_crossbow_clip.mdl") = ammo_crossbow_individual : "Crossbow bolt magazine" []
+@PointClass base(Ammo) studio("models/w_gaussammo.mdl") = ammo_gaussclip_individual : "Gauss/Gluon gun battery" []
+@PointClass base(Ammo) studio("models/w_rpgammo.mdl") = ammo_rpgclip_individual : "Rockets (x2)" []
+@PointClass base(Ammo) studio("models/spore.mdl") = ammo_sporeclip_individual : "Spore" []
+@PointClass base(Ammo) studio("models/w_uzi_clip.mdl") = ammo_uziclip_individual : "9mm Uzi magazine" []
+@PointClass base(Ammo) studio("models/w_sqknest.mdl") = ammo_snarks_individual : "Squeak Grenade" []
+@PointClass base(Ammo) studio("models/w_grenade.mdl") = ammo_handgrenade_individual : "Hand Grenade" []
+@PointClass base(Ammo) studio("models/w_medkit.mdl") = ammo_medkit_individual : "Health kit AMMO" []
+@PointClass base(Ammo) studio("models/w_medkit.mdl") = item_healthkit_individual : "Health kit" []
+@PointClass base(Ammo) studio("models/w_battery.mdl") = item_battery_individual : "HEV battery" []
