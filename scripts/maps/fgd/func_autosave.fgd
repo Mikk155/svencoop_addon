@@ -1,0 +1,16 @@
+@SolidClass = func_autosave : "Save player status. load when die"
+[
+    targetname(target_source) : "Name"
+    PrimerSpawn(string) : "spawnvector case 1"
+    SegundoSpawn(string) : "spawnvector case 2"
+    TercerSpawn(string) : "spawnvector case 3"
+    CuartoSpawn(string) : "spawnvector case 4"
+    spawnflags(flags) =
+    [
+        1: "Start Off" : 0
+		// Keep player status (armor, health)
+        2: "Keep statush" : 0
+		// Keep player origin (when touch)
+        4: "Keep origin" : 0
+    ]
+]

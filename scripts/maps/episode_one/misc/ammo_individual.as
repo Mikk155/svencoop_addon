@@ -19,6 +19,13 @@
 	Gaftherman Script
 	
 */
+
+enum ammo_individual
+{
+    SF_START_OFF = 1 << 0, //Mis huevos Can't pick up
+	SF_USE_ONLY = 1 << 1
+}
+
 void RegisterAmmoIndividual()
 {
 	DefaultRegister( "ammo_9mmclip_individual" );
@@ -41,6 +48,7 @@ void RegisterAmmoIndividual()
 	DefaultRegister( "ammo_tripmine_individual" );
 	DefaultRegister( "item_battery_individual" );
 	DefaultRegister( "item_healthkit_individual" );
+	DefaultRegister( "weaponbox_individual" );
 }
 
 void AmmoIndividualRemap()
@@ -66,6 +74,186 @@ void AmmoIndividualRemap()
 	Reemplazar( "weapon_tripmine", "ammo_tripmine_individual" );
 	Reemplazar( "item_battery", "item_battery_individual" );
 	Reemplazar( "item_healthkit", "item_healthkit_individual" );
+}
+
+class weaponbox_individual : ScriptBasePlayerItemEntity, ammo_base
+{	
+	private int m_il9mm, m_ilbuckshot, m_ilARgrenades, m_ilTM, m_ilHG, m_ilsnarks, m_ilsporeclip, m_ilrockets, m_iluranium, m_ilbolts, m_il556, m_il357, m_ilm40a1;
+	private array<string> Names;
+	private array<int> Values;
+	private array<int> MaxAmmo;
+
+	void Spawn()
+	{
+		SpawnDefault( "models/w_weaponbox.mdl" );
+	}
+
+	bool KeyValue( const string& in szKey, const string& in szValue ) 
+	{
+		if( szKey == "9mm" ) 
+		{
+			m_il9mm = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "buckshot" ) 
+		{
+			m_ilbuckshot = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "ARgrenades" ) 
+		{
+			m_ilARgrenades = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "Trip Mine" || szKey == "TM"  ) 
+		{
+			m_ilTM = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "Hand Grenade" || szKey == "HG" ) 
+		{
+			m_ilHG = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "snarks" ) 
+		{
+			m_ilsnarks = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "sporeclip" ) 
+		{
+			m_ilsporeclip = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "rockets" ) 
+		{
+			m_ilrockets = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "uranium" ) 
+		{
+			m_iluranium = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "bolts" ) 
+		{
+			m_ilbolts = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "556" ) 
+		{
+			m_il556 = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "357" ) 
+		{
+			m_il357 = atoi( szValue );
+			return true;
+		} 
+		else if( szKey == "m40a1" ) 
+		{
+			m_ilm40a1 = atoi( szValue );
+			return true;
+		} 
+		else 
+			return BaseClass.KeyValue( szKey, szValue );
+    }
+
+	bool AddAmmo( CBaseEntity@ pOther )
+	{
+		if( m_il9mm != 0 )
+		{
+			Values.insertLast( m_il9mm );
+			Names.insertLast( "9mm" );
+			MaxAmmo.insertLast( 255 );
+		}
+
+		if( m_ilbuckshot != 0 )
+		{
+			Values.insertLast( m_ilbuckshot );
+			Names.insertLast( "buckshot" );
+			MaxAmmo.insertLast( 125 );
+		}
+
+		if( m_ilARgrenades != 0 )
+		{
+			Values.insertLast( m_ilARgrenades );
+			Names.insertLast( "ARgrenades" );
+			MaxAmmo.insertLast( 10 );
+		}
+
+		if( m_ilTM != 0 )
+		{
+			Values.insertLast( m_ilTM );
+			Names.insertLast( "Trip Mine" );
+			MaxAmmo.insertLast( 5 );
+		}
+
+		if( m_ilHG != 0 )
+		{
+			Values.insertLast( m_ilHG );
+			Names.insertLast( "Hand Grenade" );
+			MaxAmmo.insertLast( 10 );
+		}
+
+		if( m_ilsnarks != 0 )
+		{
+			Values.insertLast( m_ilsnarks );
+			Names.insertLast( "snarks" );
+			MaxAmmo.insertLast( 15 );
+		}
+
+		if( m_ilsporeclip != 0 )
+		{
+			Values.insertLast( m_ilsporeclip );
+			Names.insertLast( "sporeclip" );
+			MaxAmmo.insertLast( 30 );
+		}
+
+		if( m_ilrockets != 0 )
+		{
+			Values.insertLast( m_ilrockets );
+			Names.insertLast( "rockets" );
+			MaxAmmo.insertLast( 5 );
+		}
+
+		if( m_iluranium != 0 )
+		{
+			Values.insertLast( m_iluranium );
+			Names.insertLast( "uranium" );
+			MaxAmmo.insertLast( 100 );
+		}
+
+		if( m_ilbolts != 0 )
+		{
+			Values.insertLast( m_ilbolts );
+			Names.insertLast( "bolts" );
+			MaxAmmo.insertLast( 50 );
+		}
+
+		if( m_il556 != 0 )
+		{
+			Values.insertLast( m_il556 );
+			Names.insertLast( "556" );
+			MaxAmmo.insertLast( 600 );
+		}
+
+		if( m_ilm40a1 != 0 )
+		{
+			Values.insertLast( m_ilm40a1 );
+			Names.insertLast( "m40a1" );
+			MaxAmmo.insertLast( 15 );
+		}
+
+		if( m_il357 != 0 )
+		{
+			Values.insertLast( m_il357 );
+			Names.insertLast( "357" );
+			MaxAmmo.insertLast( 36 );
+		}
+
+		return AddAmmoDefault2( cast<CBasePlayer@>( pOther ), Values, Names, MaxAmmo ); 
+	}
 }
 
 class ammo_9mmclip_individual : ScriptBasePlayerItemEntity, ammo_base
@@ -304,6 +492,7 @@ class ammo_tripmine_individual : ScriptBasePlayerItemEntity, ammo_base_c
 
 class item_battery_individual : ScriptBasePlayerItemEntity
 {
+	private bool Activated = true;
 	dictionary g_MaxPlayers;
 
 	void Spawn()
@@ -315,6 +504,11 @@ class item_battery_individual : ScriptBasePlayerItemEntity
 		else //Custom model
 			g_EntityFuncs.SetModel( self, self.pev.model );
 
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF )  )
+		{	
+            Activated = false;
+		}
+		
 		BaseClass.Spawn();
 	}
 
@@ -366,7 +560,7 @@ class item_battery_individual : ScriptBasePlayerItemEntity
 
 	void Touch( CBaseEntity@ pOther )
 	{
-		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() )
+		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() || !Activated || self.pev.SpawnFlagBitSet( SF_USE_ONLY ) )
 			return;
 				
 		AddArmor( cast<CBasePlayer@>( pOther ) );
@@ -374,7 +568,12 @@ class item_battery_individual : ScriptBasePlayerItemEntity
 		
 	void Use( CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue )
 	{
-		if (pActivator.IsPlayer())
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) && !Activated )
+		{	
+            Activated = !Activated;
+		}
+
+		if( pActivator.IsPlayer() && Activated )
 		{
 			AddArmor( cast<CBasePlayer@>( pActivator ) );
 		}
@@ -383,6 +582,7 @@ class item_battery_individual : ScriptBasePlayerItemEntity
 
 class item_healthkit_individual : ScriptBasePlayerItemEntity
 {
+	private bool Activated = true;
 	dictionary g_MaxPlayers;
 
 	void Spawn()
@@ -393,6 +593,11 @@ class item_healthkit_individual : ScriptBasePlayerItemEntity
 			g_EntityFuncs.SetModel( self, "models/w_medkit.mdl" );
 		else //Custom model
 			g_EntityFuncs.SetModel( self, self.pev.model );
+
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF )  )
+		{	
+            Activated = false;
+		}
 
 		BaseClass.Spawn();
 	}
@@ -432,7 +637,7 @@ class item_healthkit_individual : ScriptBasePlayerItemEntity
 
 	void Touch( CBaseEntity@ pOther )
 	{
-		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() )
+		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() || !Activated || self.pev.SpawnFlagBitSet( SF_USE_ONLY ) )
 			return;
 				
 		AddHealth( cast<CBasePlayer@>( pOther ) );
@@ -440,7 +645,12 @@ class item_healthkit_individual : ScriptBasePlayerItemEntity
 		
 	void Use( CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue )
 	{
-		if (pActivator.IsPlayer())
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) && !Activated )
+		{	
+            Activated = !Activated;
+		}
+
+		if( pActivator.IsPlayer() && Activated )
 		{
 			AddHealth( cast<CBasePlayer@>( pActivator ) );
 		}
@@ -449,6 +659,7 @@ class item_healthkit_individual : ScriptBasePlayerItemEntity
 
 mixin class ammo_base
 {
+	private bool Activated = true;
 	dictionary g_MaxPlayers;
 
 	void SpawnDefault( string ammo_model )
@@ -459,6 +670,11 @@ mixin class ammo_base
 			g_EntityFuncs.SetModel( self, ammo_model );
 		else //Custom model
 			g_EntityFuncs.SetModel( self, self.pev.model );
+
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF )  )
+		{	
+            Activated = false;
+		}
 
 		BaseClass.Spawn();
 	}
@@ -486,18 +702,41 @@ mixin class ammo_base
 		{
 			if( pPlayer.GiveAmmo( GiveAmmo, Type, MaxAmmo ) != -1 )
 			{
-				g_MaxPlayers[steamId] = @pPlayer;
-
 				g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
-				return true;
 			}
+			g_MaxPlayers[steamId] = @pPlayer;
+			return true;
+		}
+		return false;
+	}
+
+	bool AddAmmoDefault2( CBasePlayer@ pPlayer, array<int> GiveAmmo, array<string> Type, array<int> MaxAmmo ) 
+	{ 
+        string steamId = g_EngineFuncs.GetPlayerAuthId(pPlayer.edict());
+
+		if( pPlayer is null  )
+			return false;
+
+		if( !g_MaxPlayers.exists(steamId) )
+		{
+			g_EngineFuncs.ServerPrint( "Length: "+GiveAmmo.length()+"\n" );
+
+			for( uint i = 0; i < GiveAmmo.length(); ++i ) 
+			{
+				if( pPlayer.GiveAmmo( GiveAmmo[i], Type[i], MaxAmmo[i] ) != -1 )
+				{
+					g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/9mmclip1.wav", 1, ATTN_NORM);
+				}
+			}
+			g_MaxPlayers[steamId] = @pPlayer;
+			return true;
 		}
 		return false;
 	}
 
 	void Touch( CBaseEntity@ pOther )
 	{
-		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() )
+		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() || !Activated || self.pev.SpawnFlagBitSet( SF_USE_ONLY ) )
 			return;
 				
 		AddAmmo( cast<CBasePlayer@>( pOther ));
@@ -505,7 +744,12 @@ mixin class ammo_base
 		
 	void Use( CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue )
 	{
-		if (pActivator.IsPlayer())
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) && !Activated )
+		{	
+            Activated = !Activated;
+		}
+
+		if( pActivator.IsPlayer() && Activated )
 		{
 			AddAmmo( cast<CBasePlayer@>( pActivator ));
 		}
@@ -514,6 +758,7 @@ mixin class ammo_base
 
 mixin class ammo_base_c
 {
+	private bool Activated = true;
 	dictionary g_MaxPlayers;
 
 	void SpawnDefault( string ammo_model )
@@ -524,6 +769,11 @@ mixin class ammo_base_c
 			g_EntityFuncs.SetModel( self, ammo_model );
 		else //Custom model
 			g_EntityFuncs.SetModel( self, self.pev.model );
+
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF )  )
+		{	
+            Activated = false;
+		}
 
 		BaseClass.Spawn();
 	}
@@ -564,7 +814,7 @@ mixin class ammo_base_c
 
 	void Touch( CBaseEntity@ pOther )
 	{
-		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() )
+		if( pOther is null || !pOther.IsPlayer() || !pOther.IsAlive() || !Activated || self.pev.SpawnFlagBitSet( SF_USE_ONLY ) )
 			return;
 				
 		AddAmmo( cast<CBasePlayer@>( pOther ));
@@ -572,7 +822,12 @@ mixin class ammo_base_c
 		
 	void Use( CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue )
 	{
-		if (pActivator.IsPlayer())
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) && !Activated )
+		{	
+            Activated = !Activated;
+		}
+
+		if( pActivator.IsPlayer() && Activated )
 		{
 			AddAmmo( cast<CBasePlayer@>( pActivator ));
 		}
@@ -597,6 +852,7 @@ void Reemplazar( string item_para_buscar, string item_para_reemplazar )
 
         if( pEntity.pev.classname != item_para_buscar )
 			continue;
+			
 		if( pEntity.GetCustomKeyvalues().HasKeyvalue( "$i_ignore_item" ) )
 			continue;
 			

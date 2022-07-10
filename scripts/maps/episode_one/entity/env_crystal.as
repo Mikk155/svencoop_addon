@@ -1,24 +1,3 @@
-/*
-	Black-mesa source inspired recharge crystals
-	keyvalue "type" define what the entity will do.
-	0 = damage player
-	1 = heal player
-	2 = increase player armor
-	3 = give gauss/egon ammo
-	
-	-todo
-		the beam color will be also defined by "type"
-		monsters spawnflag.
-		start off spawnflag
-		fade effect in playerPos
-	
-	-not really intended.
-		Sprite effect in PlayerPos
-		custom sound
-		custom sprite beam
-		
-*/
-
 class env_crystal : ScriptBaseEntity
 {
     private int m_ilRadius = 128;
@@ -38,7 +17,7 @@ class env_crystal : ScriptBaseEntity
             m_ilType= atoi( szValue );
             return true;
         }
-        else if( szKey == "value" )
+        else if( szKey == "value" ) // <- que es esto realmente?
         {
             m_ilValue= atoi( szValue );
             return true;
@@ -51,6 +30,8 @@ class env_crystal : ScriptBaseEntity
     {
         g_Game.PrecacheModel( "sprites/laserbeam.spr" );
         g_Game.PrecacheGeneric( "sprites/laserbeam.spr" );
+        g_Game.PrecacheModel( "sprites/mikk/episode_one/hud_spored.spr" );
+        g_Game.PrecacheGeneric( "sprites/mikk/episode_one/hud_spored.spr" );
 
 		g_SoundSystem.PrecacheSound( "weapons/shock_fire.wav" );
 		g_Game.PrecacheGeneric( "sound/weapons/shock_fire.wav" );
@@ -103,6 +84,11 @@ class env_crystal : ScriptBaseEntity
                     Beam( pPlayer );
                     pPlayer.GiveAmmo( m_ilValue, "uranium", pPlayer.GetMaxAmmo( "uranium" ) );
                 }
+				else if( pPlayer.pev.health >= 0 && m_ilType == 4 )
+                {
+                    pPlayer.TakeDamage( self.pev, self.pev, m_ilValue * 1.2, DMG_FREEZE | DMG_RADIATION );
+					// Hud( pPlayer );
+                }
             }
             else
             {
@@ -122,10 +108,9 @@ class env_crystal : ScriptBaseEntity
     void Beam( CBaseEntity@ pPlayer )
     {
         @pBorderBeam = g_EntityFuncs.CreateBeam( "sprites/laserbeam.spr", 30 );
-        pBorderBeam.SetFlags( BEAM_POINTS );
+        pBorderBeam.SetFlags( BEAM_POINTS  | SF_BEAM_SHADEIN );
         pBorderBeam.SetStartPos( self.pev.origin );
         pBorderBeam.SetEndPos( pPlayer.Center() );
-        pBorderBeam.SetBrightness( 128 );
         pBorderBeam.SetScrollRate( 100 );
         pBorderBeam.LiveForTime( 0.10 );
         pBorderBeam.pev.rendercolor = self.pev.rendercolor == g_vecZero ? Vector( 255, 0, 0 ) : self.pev.rendercolor;

@@ -4,6 +4,9 @@
 // BMS-like recharge crystals
 #include "../entity/env_crystal"
 
+// Trigger when in/out
+#include "../entity/trigger_inout"
+
 // Multi-Language game_text entity.
 #include "../../multi_language/multi_language"
 
@@ -20,6 +23,9 @@ void MapInit()
 	
 	// BMS-like recharge crystals
 	RegisterEnvCrystal();
+	
+	// Trigger when in/out
+	RegisterTriggerInOut();
 	
 	// Multi-Language entity.
 	MultiLanguageInit();
