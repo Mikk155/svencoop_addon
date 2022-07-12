@@ -1,5 +1,6 @@
 "entity"
 {
+"message_portuguese" "Voce precisa de um codigo-chave !"
 "message" "You need a keycode !"
 "message_spanish" "Necesitas una clave !"
 "effect" "1"
@@ -18,6 +19,7 @@
 }
 "entity"
 {
+"message_portuguese" "Voce encontrou um codigo-chave !"
 "message" "You found a keycode !"
 "message_spanish" "Encontraste una clave !"
 "effect" "1"
@@ -36,6 +38,7 @@
 }
 "entity"
 {
+"message_portuguese" "Voce encontrou um tanque de gasolina"
 "message" "You found a gazoline tank"
 "message_spanish" "Encontraste un tanque de gasolina"
 "effect" "1"
@@ -54,6 +57,7 @@
 }
 "entity"
 {
+"message_portuguese" "Esta empilhadeira parece estar vazia..."
 "message" "This forklift seems to be empty..."
 "message_spanish" "Este montacargas parece estar vacio..."
 "effect" "1"
@@ -66,6 +70,32 @@
 "color2" "240 110 0"
 "color" "100 100 100"
 "y" "-1"
+"x" "-1"
+"spawnflags" "1"
+"classname" "game_text_custom"
+}
+"entity"
+{
+"classname" "trigger_relay"
+"target" "Multi_language_Placeholder"
+"targetname" "game_playerjoin"
+"delay" "5"
+"spawnflags" "64"
+}
+"entity"
+{
+"message" "This map supports Multi-language. say /language (language)"
+"message_spanish" "Traduccion: Mikk"
+"message_portuguese" "Legendado: Teemo"
+"targetname" "Multi_language_Placeholder"
+"channel" "2"
+"fxtime" "0.25"
+"holdtime" "12"
+"fadeout" "0.5"
+"fadein" "1.5"
+"color2" "255 255 255"
+"color" "100 100 100"
+"y" "0.40"
 "x" "-1"
 "spawnflags" "1"
 "classname" "game_text_custom"

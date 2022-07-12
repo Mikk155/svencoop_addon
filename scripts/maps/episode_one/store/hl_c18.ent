@@ -1,0 +1,38 @@
+"entity"
+{
+"classname" "trigger_vote"
+"message" "Accept offer?"
+"frags" "20"
+"health" "51"
+"target" "go_epone"
+"noise" "go_epone"
+"netname" "vote_checked"
+"m_iszYesString" "No. Episode-One"
+"m_iszNoString" "Yes. Half-Life 2 n 3"
+"targetname" "Start_Voting"
+}
+"entity"
+{
+"model" "*103"
+"rendermode" "5"
+"renderamt" "255"
+"angles" "0 270 0"
+"targetname" "blocker_wall"
+"classname" "func_wall"
+}
+"entity"
+{
+"classname" "trigger_relay"
+"targetname" "vote_checked"
+"delay" "2"
+"killtarget" "blocker_wall"
+"target" "changelevel"
+}
+"entity"
+{
+"classname" "trigger_changelevel"
+"targetname" "changelevel"
+"keep_inventory" "1"
+"spawnflags" "2"
+"map" "hl_c18_a1"
+}

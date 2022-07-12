@@ -1,0 +1,11 @@
+
+// GMAN
+GM_SUIT mikk/episode_one/gman/gman_suit
+GM_NASTY mikk/episode_one/gman/gman_nasty
+GM_POTENTIAL mikk/episode_one/gman/gman_potential
+GM_STEPIN mikk/episode_one/gman/gman_stepin
+GM_OTHERWISE mikk/episode_one/gman/gman_otherwise
+GM_1CHOOSE mikk/episode_one/gman/gman_choose1
+GM_2CHOOSE mikk/episode_one/gman/gman_choose2
+GM_WONTWORK mikk/episode_one/gman/gman_nowork
+GM_REGRET mikk/episode_one/gman/gman_noreg

@@ -1,0 +1,8 @@
+@SolidClass = game_save : "Save player status. load when die"
+[
+    targetname(target_source) : "Name"
+    spawnflags(flags) =
+    [
+        1: "Start Off" : 0
+    ]
+]

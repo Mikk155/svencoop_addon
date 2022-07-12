@@ -3,9 +3,9 @@
 	Trigger something when someone enter the zone. trigger again when no one is in the zone.
 	useful for making a infinite spawn feeling but when the player is around the squadmaker it is Off.-
 */
-enum trigger_once_flag
+enum trigger_inout_flag
 {
-    SF_START_OFF = 1 << 0,
+    SF_IO_START_OFF = 1 << 0,
 }
 
 class trigger_inout : ScriptBaseEntity
@@ -49,7 +49,7 @@ class trigger_inout : ScriptBaseEntity
 
         BaseClass.Spawn();
 		
-        if( !self.pev.SpawnFlagBitSet( SF_START_OFF ) )
+        if( !self.pev.SpawnFlagBitSet( SF_IO_START_OFF ) )
 		{	
 			SetThink( ThinkFunction( this.TriggerThink ) );
 			self.pev.nextthink = g_Engine.time + 0.1f;
@@ -58,7 +58,7 @@ class trigger_inout : ScriptBaseEntity
 
     void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float value)
     {
-        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) )
+        if( self.pev.SpawnFlagBitSet( SF_IO_START_OFF ) )
 		{	
 			SetThink( ThinkFunction( this.TriggerThink ) );
 			self.pev.nextthink = g_Engine.time + 0.1f;

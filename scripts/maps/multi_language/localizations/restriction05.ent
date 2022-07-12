@@ -1,5 +1,6 @@
 "entity"
 {
+"message_portuguese" "Porta da ponte esta aberta !!"
 "message" "Bridge door opened !!"
 "message_spanish" "La puerta del puente esta abierta !!"
 "effect" "1"
@@ -18,6 +19,7 @@
 }
 "entity"
 {
+"message_portuguese" "uma chave e necessaria !"
 "message" "A key is needed !"
 "message_spanish" "Se necesita una llave !"
 "effect" "1"
@@ -35,6 +37,7 @@
 }
 "entity"
 {
+"message_portuguese" "Voce encontrou uma chave"
 "message" "You found a key"
 "message_spanish" "Encontraste una llave"
 "effect" "1"
@@ -53,6 +56,7 @@
 }
 "entity"
 {
+"message_portuguese" "Quem esti ai ? Algum humano aqui ?\nPor favor, me ajude !\n"
 "message" "Who's there ? Any human here ?\nPlease, help me !\n"
 "message_spanish" "Quien anda ahi ? Algun humano ?\nPor favor, Ayudenme !\n"
 "targetname" "text_second1"
@@ -70,6 +74,7 @@
 }
 "entity"
 {
+"message_portuguese" "Estou preso em muitas dessas coisas !\nEu nao quero morrer, por favor !"
 "message" "I'm trapped by a lot of those things !\nI don't want to die, please !"
 "message_spanish" "Estoy atrapado junto un monton de esas cosas !\nNo quiero morir, Por Favor !"
 "targetname" "text_second3"
@@ -87,6 +92,7 @@
 }
 "entity"
 {
+"message_portuguese" "Eu tenho a chave para a area do armazem, voce precisa dela\nse voce quiser ir mais longe !"
 "message" "I have the key to the warehouse area, you need it\nif you want to go any further !"
 "message_spanish" "Tengo la llave del area del deposito\nSi quieres ir mas lejos !"
 "targetname" "text_second5"
@@ -104,6 +110,7 @@
 }
 "entity"
 {
+"message_portuguese" "Eles estão vindo ! Por favor !"
 "message" "They're coming ! Please !"
 "message_spanish" "Ahi vienen ! Por favor !"
 "targetname" "text_second7"
@@ -121,6 +128,7 @@
 }
 "entity"
 {
+"message_portuguese" "Temos que ir ate a barragem e descobrir quem pagou esse cientista !"
 "message" "We have to go to the dam and find out who paid this scientist !"
 "message_spanish" "Tenemos que ir a la represa y averiguar quien le pago a este cientifico !"
 "targetname" "sci_message3"
@@ -139,6 +147,7 @@
 }
 "entity"
 {
+"message_portuguese" "Este deve ser o cientista que estavamos procurando..."
 "message" "This must be the scientist we were looking for..."
 "message_spanish" "Este debe ser el cientifico al que estamos buscando..."
 "targetname" "sci_message1"
@@ -157,6 +166,7 @@
 }
 "entity"
 {
+"message_portuguese" "A nota diz que seu contato estara esperando as amostras na barragem do lado de fora do complexo."
 "message" "The note says his contact will be waiting for the samples at the dam just outside the complex."
 "message_spanish" "La nota decia que su contacto estaria esperando las muestras en la represa fuera del complejo."
 "targetname" "sci_message2"
@@ -169,6 +179,32 @@
 "color2" "240 110 0"
 "color" "100 100 100"
 "y" "0.6"
+"x" "-1"
+"spawnflags" "1"
+"classname" "game_text_custom"
+}
+"entity"
+{
+"classname" "trigger_relay"
+"target" "Multi_language_Placeholder"
+"targetname" "game_playerjoin"
+"delay" "5"
+"spawnflags" "64"
+}
+"entity"
+{
+"message" "This map supports Multi-language. say /language (language)"
+"message_spanish" "Traduccion: Mikk"
+"message_portuguese" "Legendado: Teemo"
+"targetname" "Multi_language_Placeholder"
+"channel" "2"
+"fxtime" "0.25"
+"holdtime" "12"
+"fadeout" "0.5"
+"fadein" "1.5"
+"color2" "255 255 255"
+"color" "100 100 100"
+"y" "0.40"
 "x" "-1"
 "spawnflags" "1"
 "classname" "game_text_custom"

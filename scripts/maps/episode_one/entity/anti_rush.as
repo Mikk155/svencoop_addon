@@ -1,7 +1,7 @@
 /*Original Script by Cubemath*/
 enum trigger_once_flag
 {
-    SF_START_OFF = 1 << 0
+    SF_AR_START_OFF = 1 << 0
 }
 
 class ar_trigger_once : ScriptBaseEntity 
@@ -63,7 +63,7 @@ class ar_trigger_once : ScriptBaseEntity
 
 		g_EntityFuncs.SetOrigin( self, self.pev.origin );
 
-        if( !self.pev.SpawnFlagBitSet( SF_START_OFF ) )
+        if( !self.pev.SpawnFlagBitSet( SF_AR_START_OFF ) )
 		{
 			SetThink( ThinkFunction( this.TriggerThink ) );
 			self.pev.nextthink = g_Engine.time + 0.1f;
@@ -74,7 +74,7 @@ class ar_trigger_once : ScriptBaseEntity
 	
     void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float value)
     {
-        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) )
+        if( self.pev.SpawnFlagBitSet( SF_AR_START_OFF ) )
 		{	
 			SetThink( ThinkFunction( this.TriggerThink ) );
 			self.pev.nextthink = g_Engine.time + 0.1f;

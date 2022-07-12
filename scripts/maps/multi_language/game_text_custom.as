@@ -1,14 +1,3 @@
-/*
-
-#include "Gaftherman/game_text_custom"
-
-void MapInit()
-{
-	RegisterCustomTextGame();
-}
-
-*/
-
 enum EnumLanguage
 {
 	LANGUAGE_ENGLISH = 0, 
@@ -24,7 +13,7 @@ enum EnumSpawnFlags
 {
 	SF_ALL_PLAYERS = 1 << 0
 }
-	 
+
 class game_text_custom : ScriptBaseEntity
 {
 	HUDTextParams TextParams;

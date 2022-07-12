@@ -1,5 +1,6 @@
 "entity"
 {
+"message_portuguese" "Bem, eu nao esperava que uma pequena equipe de mercenarios matasse tantos de meus homens... Acho que voce tambem pegou o cientista que eu estava esperando."
 "message" "Well, I didn't expect a small mercenary team to kill so many of my men... I guess you also got the scientist I was waiting for."
 "message_spanish" "Bueno, no esperaba que un equipo chico de mercenarios matara a tantos de mis hombres... \n Supongo que tambien tienes al cientifico que estaba esperando".
 "targetname" "elite_text1"
@@ -17,6 +18,7 @@
 }
 "entity"
 {
+"message_portuguese" "Estou muito impressionado, mas voce sabe demais, nao posso deixar voce sair daqui vivo..."
 "message" "I'm very impressed, but you know too much, I can't let you get out of here alive..."
 "message_spanish" "Estoy muy impresionado, pero sabes demasiado, no puedo dejar que salgas de aqui con vida..."
 "targetname" "elite_text2"
@@ -34,6 +36,7 @@
 }
 "entity"
 {
+"message_portuguese" "Voce encontrou uma chave"
 "message" "You found a key"
 "message_spanish" "Encontraste una llave"
 "effect" "1"
@@ -52,6 +55,7 @@
 }
 "entity"
 {
+"message_portuguese" "E necessaria uma chave !"
 "message" "A key is needed !"
 "message_spanish" "Se necesita una llave !"
 "effect" "1"
@@ -69,6 +73,7 @@
 }
 "entity"
 {
+"message_portuguese" "Temos aqui todas as provas que precisamos, devemos sair daqui antes que piore !"
 "message" "We have here all the proofs we need, we should get out of here before it gets worse !"
 "message_spanish" "Aqui tenemos todas las pruebas que necesitamos, debemos salir de aquí antes de que empeore !"
 "effect" "1"
@@ -86,6 +91,7 @@
 "classname" "game_text_custom"
 }
 {
+message_portuguese" "Entao esse oficial estava por tras de tudo isso. Ele pagou o cientista para roubar as pesquisas da NP Society..."
 "message" "So this officer was behind all this. He paid the scientist to steal the NP Society's researches..."
 "message_spanish" "Asi que este oficial estaba detras de todo esto. Le pago al cientifico para robar las investigaciones de la Sociedad NP..."
 "effect" "1"
@@ -104,6 +110,7 @@
 }
 "entity"
 {
+"message_portuguese" "Mas por que ?"
 "message" "But why ?"
 "message_spanish" "Pero.. Porque ?"
 "effect" "1"
@@ -116,6 +123,32 @@
 "color2" "240 110 0"
 "color" "100 100 100"
 "y" "0.6"
+"x" "-1"
+"spawnflags" "1"
+"classname" "game_text_custom"
+}
+"entity"
+{
+"classname" "trigger_relay"
+"target" "Multi_language_Placeholder"
+"targetname" "game_playerjoin"
+"delay" "5"
+"spawnflags" "64"
+}
+"entity"
+{
+"message" "This map supports Multi-language. say /language (language)"
+"message_spanish" "Traduccion: Mikk"
+"message_portuguese" "Legendado: Teemo"
+"targetname" "Multi_language_Placeholder"
+"channel" "2"
+"fxtime" "0.25"
+"holdtime" "12"
+"fadeout" "0.5"
+"fadein" "1.5"
+"color2" "255 255 255"
+"color" "100 100 100"
+"y" "0.40"
 "x" "-1"
 "spawnflags" "1"
 "classname" "game_text_custom"

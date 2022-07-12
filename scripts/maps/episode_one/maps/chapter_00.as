@@ -1,5 +1,5 @@
-// func_autosave
-#include "../entity/func_autosave"
+// Checkpoints & Player's lives
+#include "../hooks/Initsave"
 
 // BMS-like recharge crystals
 #include "../entity/env_crystal"
@@ -14,12 +14,12 @@
 #include "../entity/anti_rush"
 
 // HLSP AMMUNITION
-#include "../misc/ammo_individual"
+#include "../entity/ammo_individual"
 
 void MapInit()
 {
-	// func_autosave
-	RegisterTriggerPlayerSaveFunc();
+	// Checkpoints & Player's lives
+	TriggerAutoSaveInit();
 	
 	// BMS-like recharge crystals
 	RegisterEnvCrystal();

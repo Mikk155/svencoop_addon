@@ -303,3 +303,29 @@
 "spawnflags" "1"
 "classname" "game_text"
 }
+"entity"
+{
+"classname" "trigger_relay"
+"target" "Multi_language_Placeholder"
+"targetname" "game_playerjoin"
+"delay" "5"
+"spawnflags" "64"
+}
+"entity"
+{
+"message" "This map supports Multi-language. say /language (language)"
+"message_spanish" "Traduccion: Mikk"
+"message_portuguese" "Legendado: Teemo"
+"targetname" "Multi_language_Placeholder"
+"channel" "2"
+"fxtime" "0.25"
+"holdtime" "12"
+"fadeout" "0.5"
+"fadein" "1.5"
+"color2" "255 255 255"
+"color" "100 100 100"
+"y" "0.40"
+"x" "-1"
+"spawnflags" "1"
+"classname" "game_text_custom"
+}

@@ -1,0 +1,38 @@
+"entity"
+{
+"classname" "trigger_vote"
+"message" "Want to continue in Episode-One?"
+"frags" "20"
+"health" "51"
+"target" "go_epone"
+"noise" "go_epone"
+"netname" "vote_checked"
+"m_iszYesString" "Yes. Episode-One"
+"m_iszNoString" "No. End here."
+"targetname" "change"
+}
+"entity"
+{
+"classname" "trigger_changevalue"
+"targetname" "go_epone"
+"target" "changelevel"
+"m_iszValueName" "map"
+"m_iszNewValue" "hl_c18_a1"
+"m_iszValueType" "0"
+"message" "vote_checked"
+}
+"entity"
+{
+"classname" "trigger_relay"
+"targetname" "vote_checked"
+"delay" "2"
+"target" "changelevel"
+}
+"entity"
+{
+"classname" "trigger_changelevel"
+"targetname" "changelevel"
+"keep_inventory" "1"
+"spawnflags" "2"
+"map" "hl_c17"
+}
