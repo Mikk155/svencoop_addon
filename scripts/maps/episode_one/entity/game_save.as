@@ -125,9 +125,9 @@ class game_save : ScriptBaseEntity
 		SpawnCountHudText.fadeoutTime = 0.25;
 		SpawnCountHudText.holdTime = 0.2;
 		SpawnCountHudText.fxTime = 0;
-		SpawnCountHudText.channel = 0;
+		SpawnCountHudText.channel = 8;
 
-		g_PlayerFuncs.HudMessage(pPlayer, SpawnCountHudText, "Game saved in " + (pData.touched-(pData.spawned-1)) + " zones \n" );
+		g_PlayerFuncs.HudMessage(pPlayer, SpawnCountHudText, "Lives: " + (pData.touched-(pData.spawned-1)));
 	}
 
 	void SpawnHUDText( CBasePlayer@ pPlayer, PlayerKeepData@ pData )
@@ -147,7 +147,7 @@ class game_save : ScriptBaseEntity
 		SpawnHudText.fadeoutTime = 0.25;
 		SpawnHudText.holdTime = 0.2;
 		SpawnHudText.fxTime = 0;
-		SpawnHudText.channel = 1;
+		SpawnHudText.channel = 7;
 
 		g_PlayerFuncs.HudMessage(pPlayer, SpawnHudText, "Press the 'Use' or 'Primary Attack' key to activate the spawn");
 	}

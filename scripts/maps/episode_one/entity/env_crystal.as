@@ -22,6 +22,16 @@ class env_crystal : ScriptBaseEntity
             m_ilValue = atoi( szValue );
             return true;
         }
+		if( szKey == "minhullsize" ) 
+		{
+			g_Utility.StringToVector( self.pev.vuser1, szValue );
+			return true;
+		} 
+		else if( szKey == "maxhullsize" ) 
+		{
+			g_Utility.StringToVector( self.pev.vuser2, szValue );
+			return true;
+		}
         else 
             return BaseClass.KeyValue( szKey, szValue );
     }
@@ -53,6 +63,16 @@ class env_crystal : ScriptBaseEntity
 			CopyPointer( pSourceMonster );
 			//SetThink( ThinkFunction( this.CopyPointer( pSourceMonster ) ) ); <- dice error.
 			//self.pev.nextthink = g_Engine.time + 0.1f;
+		}
+
+        if( self.GetClassname() == "env_crystal" && string( self.pev.model )[0] == "*" && self.IsBSPModel() )
+        {
+            g_EntityFuncs.SetModel( self, self.pev.model );
+            g_EntityFuncs.SetSize( self.pev, self.pev.mins, self.pev.maxs );
+        }
+		else if( self.GetClassname() == "env_crystal" && string( self.pev.minhullsize )[0] == "" && self.IsBSPModel() )
+		{
+			g_EntityFuncs.SetSize( self.pev, self.pev.vuser1, self.pev.vuser2 );		
 		}
 		
 		g_EntityFuncs.SetOrigin( self, self.pev.origin );
@@ -86,23 +106,23 @@ class env_crystal : ScriptBaseEntity
 
             if( ( self.pev.origin - pPlayer.pev.origin ).Length() <= m_ilRadius && self.FVisibleFromPos( pPlayer.pev.origin, self.pev.origin ) )
             {
-                if( pPlayer.pev.health >= 0 && m_ilType == 0 )
+                if( pPlayer.pev.health >= 0 && m_ilType == 0 ) // Just damage.
                 {
 					RenderBeams( pPlayer );
                     pPlayer.TakeDamage( self.pev, self.pev, m_ilValue * 1.2, DMG_SHOCK );
                 }
-                else if( pPlayer.pev.health < pPlayer.pev.max_health && m_ilType == 1 )
+                else if( pPlayer.pev.health < pPlayer.pev.max_health && m_ilType == 1 ) // Just heal.
                 {
 					RenderBeams( pPlayer );
                     pPlayer.pev.health = pPlayer.pev.health + m_ilValue;
                 }
-                else if( pPlayer.pev.armorvalue < pPlayer.pev.armortype && m_ilType == 2 )
+                else if( pPlayer.pev.armorvalue < pPlayer.pev.armortype && m_ilType == 2 ) // Just recharge suit.
                 {
 					RenderBeams( pPlayer );
                     pPlayer.pev.armorvalue = pPlayer.pev.armorvalue + m_ilValue;
                     pPlayer.TakeDamage( self.pev, self.pev, 0 * 0.0, DMG_SHOCK );
                 }
-                else if( pPlayer.m_rgAmmo( g_PlayerFuncs.GetAmmoIndex( "uranium" ) ) < pPlayer.GetMaxAmmo( "uranium" ) && m_ilType == 3 )
+                else if( pPlayer.m_rgAmmo( g_PlayerFuncs.GetAmmoIndex( "uranium" ) ) < pPlayer.GetMaxAmmo( "uranium" ) && m_ilType == 3 ) // Just give uranium.
                 {                  
 					RenderBeams( pPlayer );
                     pPlayer.GiveAmmo( m_ilValue, "uranium", pPlayer.GetMaxAmmo( "uranium" ) );
@@ -110,10 +130,15 @@ class env_crystal : ScriptBaseEntity
                 }
 				else if( pPlayer.pev.health >= 0 && m_ilType == 4 )
                 {
-                    pPlayer.TakeDamage( self.pev, self.pev, m_ilValue * 1.2, DMG_PARALYZE );
+                    pPlayer.TakeDamage( self.pev, self.pev, m_ilValue * 1.2, DMG_PARALYZE ); // Paralize spores.
 					pPlayer.pev.velocity = pPlayer.pev.velocity * 0.9;
 					pPlayer.SetMaxSpeedOverride( 80 );
 					PlayerFX( pPlayer );
+                }
+				else if( pPlayer.pev.health >= 0 && m_ilType == 5 )
+                {
+					pPlayer.TakeDamage( self.pev, self.pev, 1 * 1.0, DMG_SLOWBURN | DMG_BURN ); // Burn player.
+					RenderFire(pPlayer);
                 }
             }
             else
@@ -147,6 +172,19 @@ class env_crystal : ScriptBaseEntity
 		
 		g_SoundSystem.PlaySound( pPlayer.edict(), CHAN_STATIC, "mikk/episode_one/ambience/alien_beacon.wav", 1.0f, 1.0f, 0, PITCH_NORM );
 		return;   
+    }
+
+	void RenderFire(CBasePlayer@ pPlayer)
+    {
+		NetworkMessage firemsg( MSG_BROADCAST, NetworkMessages::SVC_TEMPENTITY, null );
+		
+		firemsg.WriteByte(TE_PLAYERSPRITES);
+		firemsg.WriteShort(pPlayer.entindex());
+		firemsg.WriteShort(g_EngineFuncs.ModelIndex( "sprites/fire.spr" ));
+		firemsg.WriteByte(16);
+		firemsg.WriteByte(0);
+		firemsg.End();
+		return;
     }
 
     void PlayerFX( CBaseEntity@ pPlayer )
@@ -190,6 +228,21 @@ class env_crystal : ScriptBaseEntity
 
 		return;   
     }*/
+	bool Inside(CBasePlayer@ pPlayer)
+	{
+		bool a = true;
+		a = a && pPlayer.pev.origin.x + pPlayer.pev.maxs.x >= self.pev.origin.x + self.pev.mins.x;
+		a = a && pPlayer.pev.origin.y + pPlayer.pev.maxs.y >= self.pev.origin.y + self.pev.mins.y;
+		a = a && pPlayer.pev.origin.z + pPlayer.pev.maxs.z >= self.pev.origin.z + self.pev.mins.z;
+		a = a && pPlayer.pev.origin.x + pPlayer.pev.mins.x <= self.pev.origin.x + self.pev.maxs.x;
+		a = a && pPlayer.pev.origin.y + pPlayer.pev.mins.y <= self.pev.origin.y + self.pev.maxs.y;
+		a = a && pPlayer.pev.origin.z + pPlayer.pev.mins.z <= self.pev.origin.z + self.pev.maxs.z;
+
+		if(a)
+			return true;
+		else
+			return false;
+	}
 }
 
 void RegisterEnvCrystal() 

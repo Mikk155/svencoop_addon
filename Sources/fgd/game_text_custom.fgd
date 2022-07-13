@@ -25,14 +25,14 @@
 	fxtime(string) : "Scan time (scan effect only)" : "0.25"
 	channel(choices) : "Channel" : 1 =
 	[
-		1 : "Channel 1"
-		2 : "Channel 2"
-		3 : "Channel 3"
-		4 : "Channel 4"
-		5 : "Channel 5"
-		6 : "Channel 6"
-		7 : "Channel 7"
-		8 : "Channel 8"
+		1 : "1 Voices"
+		2 : "2 Voices"
+		3 : "3 Voices"
+		4 : "4 messages"
+		5 : "5 messages"
+		6 : "6 messages"
+		7 : "7 IN USE"
+		8 : "8 IN USE"
 	]
 	master(string) : "Master"
 
