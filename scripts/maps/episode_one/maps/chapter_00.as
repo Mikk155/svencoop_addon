@@ -2,7 +2,7 @@
 #include "../hooks/Initsave"
 
 // BMS-like recharge crystals
-//#include "../entity/env_hurtzone"
+#include "../entity/env_hurtzone"
 
 // Trigger when in/out
 #include "../entity/trigger_inout"
@@ -19,7 +19,7 @@ void MapInit()
 	TriggerAutoSaveInit();
 
 	// BMS-like recharge crystals
-//	RegisterEnvHurtZone();
+	RegisterEnvHurtZone();
 
 	// Trigger when in/out
 	RegisterTriggerInOut();

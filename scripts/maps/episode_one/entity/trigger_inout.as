@@ -76,7 +76,7 @@ class trigger_inout : ScriptBaseEntity
 			if( pPlayer is null || !pPlayer.IsConnected() || !pPlayer.IsAlive() )
 				continue;
 
-			if( !Inside( pPlayer ) ) 
+			if( !/*UtilEnts::*/Inside( pPlayer ) ) 
 			{
 				playersTrigger = playersTrigger + 1.0f;
 			}
@@ -109,7 +109,7 @@ class trigger_inout : ScriptBaseEntity
 		self.pev.nextthink = g_Engine.time + 0.1f;
 	}
 
-	bool Inside(CBasePlayer@ pPlayer)
+/*	bool Inside(CBasePlayer@ pPlayer)
 	{
 		bool a = true;
 		a = a && pPlayer.pev.origin.x + pPlayer.pev.maxs.x >= self.pev.origin.x + self.pev.mins.x;
@@ -121,6 +121,22 @@ class trigger_inout : ScriptBaseEntity
 
 		if(a)
 			return true;
+		else
+			return false;
+	}*/
+	
+	bool Inside(CBasePlayer@ pPlayer)	
+	{
+		bool a = true;
+		a = a && pPlayer.pev.origin.x + pPlayer.pev.maxs.x >= self.pev.origin.x + self.pev.mins.x;
+		a = a && pPlayer.pev.origin.y + pPlayer.pev.maxs.y >= self.pev.origin.y + self.pev.mins.y;
+		a = a && pPlayer.pev.origin.z + pPlayer.pev.maxs.z >= self.pev.origin.z + self.pev.mins.z;
+		a = a && pPlayer.pev.origin.x + pPlayer.pev.mins.x <= self.pev.origin.x + self.pev.maxs.x;
+		a = a && pPlayer.pev.origin.y + pPlayer.pev.mins.y <= self.pev.origin.y + self.pev.maxs.y;
+		a = a && pPlayer.pev.origin.z + pPlayer.pev.mins.z <= self.pev.origin.z + self.pev.maxs.z;
+			
+			if(a)
+		return true;
 		else
 			return false;
 	}

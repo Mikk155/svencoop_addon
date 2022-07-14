@@ -13,14 +13,10 @@ class env_hurtzone : ScriptBaseEntity
 	private int m_ilHudAlt			= DMG_GENERIC;
 	private int m_ilBeamPointer		= 0;
     private CBeam@ pBorderBeam;
-	private string m_ilCustomBeam	= "sprites/laserbeam.spr";
 	private int m_ilFadeScreen		= 0;
 	private int m_ilPlaySound		= 0;
-	private string m_ilCustomSound	= "ambience/alien_beacon.wav";
 	private int m_ilSpeedModifier	= 0;
 	private int m_ilGlowPlayers		= 0;
-	private int m_ilAttachSprites	= 0;
-	private string m_ilCustomAttach	= "sprites/fire.spr";
 
 	bool KeyValue( const string& in szKey, const string& in szValue ) 
 	{
@@ -54,14 +50,9 @@ class env_hurtzone : ScriptBaseEntity
             m_ilHudAlt = atoi( szValue );
             return true;
         }
-        else if( szKey == "BeamPointer" )
+		else if( szKey == "BeamPointer" )
         {
             m_ilBeamPointer = atoi( szValue );
-            return true;
-        }
-        else if( szKey == "CustomBeam" )
-        {
-            m_ilCustomBeam = atoi( szValue );
             return true;
         }
         else if( szKey == "FadeScreen" )
@@ -69,14 +60,9 @@ class env_hurtzone : ScriptBaseEntity
             m_ilFadeScreen = atoi( szValue );
             return true;
         }
-        else if( szKey == "sounds" )
+		else if( szKey == "sounds" )
         {
             m_ilPlaySound = atoi( szValue );
-            return true;
-        }
-        else if( szKey == "customsound" )
-        {
-            m_ilCustomSound = atoi( szValue );
             return true;
         }
         else if( szKey == "Speedmodifier" )
@@ -89,17 +75,7 @@ class env_hurtzone : ScriptBaseEntity
             m_ilGlowPlayers = atoi( szValue );
             return true;
         }
-        else if( szKey == "AttachSprites" )
-        {
-            m_ilAttachSprites = atoi( szValue );
-            return true;
-        }
-        else if( szKey == "CustomSprites" )
-        {
-            m_ilCustomAttach = atoi( szValue );
-            return true;
-        }
-		if( szKey == "minhullsize" ) 
+		else if( szKey == "minhullsize" ) 
 		{
 			g_Utility.StringToVector( self.pev.vuser1, szValue );
 			return true;
@@ -117,18 +93,9 @@ class env_hurtzone : ScriptBaseEntity
     {
         g_Game.PrecacheModel( "sprites/laserbeam.spr" );
         g_Game.PrecacheGeneric( "sprites/laserbeam.spr" );
-        g_Game.PrecacheGeneric(m_ilCustomBeam);
-		g_Game.PrecacheModel(m_ilCustomBeam);
-		
-        g_Game.PrecacheModel( "sprites/fire.spr" );
-        g_Game.PrecacheGeneric( "sprites/fire.spr" );
-        g_Game.PrecacheGeneric(m_ilCustomAttach);
-		g_Game.PrecacheModel(m_ilCustomAttach);
 
 		g_SoundSystem.PrecacheSound( "ambience/alien_beacon.wav" );
 		g_Game.PrecacheGeneric( "ambience/alien_beacon.wav" );
-		g_SoundSystem.PrecacheSound(m_ilCustomSound);
-		g_Game.PrecacheGeneric("sound/" + m_ilCustomSound);
 
         BaseClass.Precache();
     }
@@ -140,7 +107,7 @@ class env_hurtzone : ScriptBaseEntity
 		self.pev.solid 			= SOLID_NOT;
 		
 		// Asign bspmodel if it is, ignore radius n hullsizes
-        if( self.GetClassname() == "env_hurtzone" && string( self.pev.model )[0] == "*" && self.IsBSPModel() )
+		if( self.GetClassname() == "env_hurtzone" && string( self.pev.model )[0] == "*" && self.IsBSPModel() )
         {
             g_EntityFuncs.SetModel( self, self.pev.model );
             g_EntityFuncs.SetSize( self.pev, self.pev.mins, self.pev.maxs );
@@ -223,7 +190,7 @@ class env_hurtzone : ScriptBaseEntity
 				pPlayer.pev.renderamt   = 255;
 				pPlayer.pev.rendercolor = Vector(0,0,0); 
 				// Stop the sound.
-				g_SoundSystem.StopSound( pPlayer.edict(), CHAN_STATIC, m_ilCustomSound ); // it is from the audio remaster
+				g_SoundSystem.StopSound( pPlayer.edict(), CHAN_STATIC, "ambience/alien_beacon.wav" ); // it is from the audio remaster
 				// Return default speed.
 				pPlayer.SetMaxSpeedOverride( -1 );
             }
@@ -249,7 +216,7 @@ class env_hurtzone : ScriptBaseEntity
     {
 		if( m_ilBeamPointer == 1 ) // Add beam from this entity's origin to the affected player.
 		{
-			@pBorderBeam = g_EntityFuncs.CreateBeam( m_ilCustomBeam, 30 );
+			@pBorderBeam = g_EntityFuncs.CreateBeam( "sprites/laserbeam.spr", 30 );
 			pBorderBeam.SetFlags( BEAM_POINTS  | SF_BEAM_SHADEIN );
 			pBorderBeam.SetStartPos( self.pev.origin );
 			pBorderBeam.SetEndPos( pPlayer.Center() );
@@ -263,7 +230,7 @@ class env_hurtzone : ScriptBaseEntity
 		}
 		if( m_ilPlaySound == 1) // Play sounds (specify custom sounds too)
 		{
-			g_SoundSystem.PlaySound( pPlayer.edict(), CHAN_STATIC, m_ilCustomSound, 1.0f, 1.0f, 0, PITCH_NORM );
+			g_SoundSystem.PlaySound( pPlayer.edict(), CHAN_STATIC, "ambience/alien_beacon.wav", 1.0f, 1.0f, 0, PITCH_NORM );
 		}
 		if( m_ilGlowPlayers == 1)
 		{
@@ -271,18 +238,6 @@ class env_hurtzone : ScriptBaseEntity
 			pPlayer.pev.renderfx    = kRenderFxGlowShell;
 			pPlayer.pev.renderamt   = 4;
 			pPlayer.pev.rendercolor = self.pev.rendercolor;
-		}
-		if( m_ilAttachSprites == 1)
-		{
-			NetworkMessage firemsg( MSG_BROADCAST, NetworkMessages::SVC_TEMPENTITY, null );
-		
-			firemsg.WriteByte(TE_PLAYERSPRITES);
-			firemsg.WriteShort(pPlayer.entindex());
-			firemsg.WriteShort(g_EngineFuncs.ModelIndex( m_ilCustomAttach ));
-			firemsg.WriteByte(16);
-			firemsg.WriteByte(0);
-			firemsg.End();
-			return;
 		}
 		
 		// For hud DMG types.
