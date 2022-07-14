@@ -3,7 +3,7 @@
     targetname(target_source) : "Name"
 	
 	// monster to copy origin and status (if npc die this entity self-remove)
-	source(target_destination) : "Source entity"
+	target(target_destination) : "Source entity"
 	
 	wait(string) : "ammout per interval" : "1"
 	
@@ -13,10 +13,6 @@
         1 : "Health"
         2 : "Armor"
         3 : "Ammunition (see bellow)"
-    ]
-    ammotype(choices) : "Ammunition to give" : uranium =
-    [
-        uranium : "uranium"
     ]
 	
 	// Note that you can use any DMG type, but i added here only the ones i could use.
@@ -48,15 +44,6 @@
         0 : "No Beam sprite"
         1 : "Beam sprite"
     ]
-	CustomBeam(sprite) : "Beam-Sprite Name" : "sprites/laserbeam.spr"
-	
-	// Define if the entity will Create sprites around the player like if he is burning.
-    AttachSprites(choices) : "Attach sprites" : 0 =
-    [
-        0 : "Don't atach sprites"
-        1 : "Attach sprites"
-    ]
-	CustomSprites(sprite) : "Attached-Sprites Name" : "sprites/fire.spr"
 	
 	// Define if show fade effect in player's screen
     FadeScreen(choices) : "Fade player's screen" : 0 =
@@ -81,7 +68,6 @@
         0 : "Don't play sounds"
         1 : "Use sounds"
     ]
-	customsound(sound) : "Sound File" : "ambience/alien_beacon.wav"
 	
 	// Player's speed modifier. 0 = dont change
     Speedmodifier(string) : "Speed modifier" : "0"
@@ -96,4 +82,64 @@
 	// note if use hullsizes, Make sure the radius value is 0. otherwise the entity will use radius over hullsizes.
 	minhullsize(string) : "Custom Min Hull Size (X Y Z)" : "0 0 0"
 	maxhullsize(string) : "Custom Max Hull Size (X Y Z)" : "0 0 0"
+]
+
+@SolidClass base(Mandatoryy) = env_hurtzone : "BMS inspired crystal"
+[
+    targetname(target_source) : "Name"
+	target(target_destination) : "Source entity"
+	wait(string) : "ammout per interval" : "1"
+    type(choices) : "Zone type" : 0 =
+    [
+        0 : "Damage"
+        1 : "Health"
+        2 : "Armor"
+        3 : "Ammunition (see bellow)"
+    ]
+    damagehud(choices) : "HUD DMG Types" : DMG_GENERIC =
+    [
+        DMG_GENERIC : "No sprite"
+        DMG_ALWAYSGIB : "Always Gib victim"
+        DMG_BURN : "DMG_BURN"
+        DMG_FREEZE : "DMG_FREEZE"
+        DMG_SHOCK : "DMG_SHOCK"
+        DMG_PARALYZE : "DMG_PARALYZE"
+        DMG_RADIATION : "DMG_RADIATION"
+    ]
+    damagehudalt(choices) : "HUD DMG (Secondary)" : DMG_GENERIC =
+    [
+        DMG_GENERIC : "No sprite"
+        DMG_ALWAYSGIB : "Always Gib victim"
+        DMG_BURN : "DMG_BURN"
+        DMG_FREEZE : "DMG_FREEZE"
+        DMG_SHOCK : "DMG_SHOCK"
+        DMG_PARALYZE : "DMG_PARALYZE"
+        DMG_RADIATION : "DMG_RADIATION"
+    ]
+    BeamPointer(choices) : "Beam Entity-to-player" : 0 =
+    [
+        0 : "No Beam sprite"
+        1 : "Beam sprite"
+    ]
+    FadeScreen(choices) : "Fade player's screen" : 0 =
+    [
+        0 : "Don't fade screen"
+        1 : "Fade screen"
+    ]
+    PlayersGlow(choices) : "Player's glowing" : 0 =
+    [
+        0 : "Don't glow"
+        1 : "Glow"
+    ]
+	rendercolor(color255) : "FX Color (R G B)" : "255 0 0"
+    sounds(choices) : "Play sounds" : 0 =
+    [
+        0 : "Don't play sounds"
+        1 : "Use sounds"
+    ]
+    Speedmodifier(string) : "Speed modifier" : "0"
+    spawnflags(flags) =
+    [
+        1: "Start Off" : 0
+    ]
 ]
