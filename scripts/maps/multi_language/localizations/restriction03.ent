@@ -1,5 +1,16 @@
 "entity"
 {
+"message" "activated"
+"message_spanish" "activated"
+"message_portuguese" "activated"
+"message_german" ""
+"message_french" ""
+"message_italian" ""
+"message_esperanto" ""
+"classname" "info_target"
+}
+"entity"
+{
 "message_portuguese" "Temos que restaurar a energia primeiro!"
 "message" "We have to restore the power first !"
 "message_spanish" "Primero tenemos que restaurar la energia!"

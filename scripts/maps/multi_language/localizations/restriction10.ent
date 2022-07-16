@@ -1,5 +1,16 @@
 "entity"
 {
+"message" "activated"
+"message_spanish" "activated"
+"message_portuguese" "activated"
+"message_german" ""
+"message_french" ""
+"message_italian" ""
+"message_esperanto" ""
+"classname" "info_target"
+}
+"entity"
+{
 "message_portuguese" "Estamos a caminho, mas um helicóptero militar está se aproximando de sua posição. Você tem que derrubá-lo para que possamos buscá-lo!"
 "message" "We're on the way, but a military helicopter is approaching your position. You have to take it down to allow us to pick you up !"
 "message_spanish" "Estamos en camino, pero un helicoptero militar se acerca a su posicion. Tienes que destruirlo para poder bajar !"

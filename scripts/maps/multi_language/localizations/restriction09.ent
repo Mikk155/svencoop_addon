@@ -1,5 +1,16 @@
 "entity"
 {
+"message" "activated"
+"message_spanish" "activated"
+"message_portuguese" "activated"
+"message_german" ""
+"message_french" ""
+"message_italian" ""
+"message_esperanto" ""
+"classname" "info_target"
+}
+"entity"
+{
 "message_portuguese" "Ei, voce esta tentando sair deste lugar, certo ?/nEstou preso aqui desde que meu esquadrao foi morto por aquelas criaturas..."
 "message" "Hey, you're trying to leave this place, right ? I'm trapped here since my squad got killed by those creatures..."
 "message_spanish"" "Oye, estas tratando de salir de este lugar, ¿verdad? \n Estuve atrapado aqui desde que esas criaturas mataron a mi escuadron..."

@@ -1,0 +1,20 @@
+@SolidClass size(8 8 8) color(255 0 0) = zone_caller : "trigger when action"
+[
+	target(target_destination) : "Target"
+	calltype(choices) : "Call type" : 0 =
+	[
+		0 : "IN_USE"
+		1 : "IN_DUCK"
+		2 : "IN_ATTACK"
+		3 : "IN_JUMP"
+		4 : "IN_FORWARD"
+		5 : "IN_BACK"
+		6 : "IN_ATTACK2"
+		7 : "IN_RUN"
+		8 : "IN_ALT1"
+		9 : "IN_SCORE"
+		10 : "IN_RELOAD"
+		11 : "IN_MOVERIGHT"
+		12 : "IN_MOVELEFT"
+	]
+]

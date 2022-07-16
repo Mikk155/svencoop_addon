@@ -1,0 +1,2 @@
+This icon represent a point in the world where certain number of players must be present before continue.
+This happen because a important event in the map will happen and the map want certain percent of players to be present.

@@ -18,7 +18,7 @@ class game_text_custom : ScriptBaseEntity
 {
 	HUDTextParams TextParams;
 	private string_t message_spanish, message_portuguese, message_german, message_french, message_italian, message_esperanto;
-		
+
 	void Spawn() 
 	{
 		self.pev.solid = SOLID_NOT;

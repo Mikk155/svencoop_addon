@@ -1,5 +1,16 @@
 "entity"
 {
+"message" "activated"
+"message_spanish" "activated"
+"message_portuguese" "activated"
+"message_german" ""
+"message_french" ""
+"message_italian" ""
+"message_esperanto" ""
+"classname" "info_target"
+}
+"entity"
+{
 "message_portuguese" "porta de seguranca aberta"
 "message" "Security door opened"
 "message_spanish" "Puerta de seguridad abierta"

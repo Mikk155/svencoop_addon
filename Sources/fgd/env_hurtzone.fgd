@@ -16,26 +16,26 @@
     ]
 	
 	// Note that you can use any DMG type, but i added here only the ones i could use.
-    damagehud(choices) : "HUD DMG Types" : DMG_GENERIC =
+    damagehud(choices) : "HUD DMG Types" : 0 =
     [
-        DMG_GENERIC : "No sprite"
-        DMG_ALWAYSGIB : "Always Gib victim"
-        DMG_BURN : "DMG_BURN"
-        DMG_FREEZE : "DMG_FREEZE"
-        DMG_SHOCK : "DMG_SHOCK"
-        DMG_PARALYZE : "DMG_PARALYZE"
-        DMG_RADIATION : "DMG_RADIATION"
+        0 : "No sprite (DMG_GENERIC)"
+        1 : "DMG_ALWAYSGIB"
+        2 : "DMG_BURN"
+        3 : "DMG_FREEZE"
+        4 : "DMG_SHOCK"
+        5 : "DMG_PARALYZE"
+        6 : "DMG_RADIATION"
     ]
 	
-    damagehudalt(choices) : "HUD DMG (Secondary)" : DMG_GENERIC =
+    damagehudalt(choices) : "HUD DMG (Secondary)" : 0 =
     [
-        DMG_GENERIC : "No sprite"
-        DMG_ALWAYSGIB : "Always Gib victim"
-        DMG_BURN : "DMG_BURN"
-        DMG_FREEZE : "DMG_FREEZE"
-        DMG_SHOCK : "DMG_SHOCK"
-        DMG_PARALYZE : "DMG_PARALYZE"
-        DMG_RADIATION : "DMG_RADIATION"
+        0 : "No sprite (DMG_GENERIC)"
+        1 : "DMG_ALWAYSGIB"
+        2 : "DMG_BURN"
+        3 : "DMG_FREEZE"
+        4 : "DMG_SHOCK"
+        5 : "DMG_PARALYZE"
+        6 : "DMG_RADIATION"
     ]
 	
 	// Define if the entity will trace a beam between entity's origin and player's origin.
@@ -84,7 +84,7 @@
 	maxhullsize(string) : "Custom Max Hull Size (X Y Z)" : "0 0 0"
 ]
 
-@SolidClass base(Mandatoryy) = env_hurtzone : "BMS inspired crystal"
+@SolidClass = env_hurtzone : "BMS inspired crystal"
 [
     targetname(target_source) : "Name"
 	target(target_destination) : "Source entity"
@@ -96,25 +96,26 @@
         2 : "Armor"
         3 : "Ammunition (see bellow)"
     ]
-    damagehud(choices) : "HUD DMG Types" : DMG_GENERIC =
+    damagehud(choices) : "HUD DMG Types" : 0 =
     [
-        DMG_GENERIC : "No sprite"
-        DMG_ALWAYSGIB : "Always Gib victim"
-        DMG_BURN : "DMG_BURN"
-        DMG_FREEZE : "DMG_FREEZE"
-        DMG_SHOCK : "DMG_SHOCK"
-        DMG_PARALYZE : "DMG_PARALYZE"
-        DMG_RADIATION : "DMG_RADIATION"
+        0 : "No sprite (DMG_GENERIC)"
+        1 : "DMG_ALWAYSGIB"
+        2 : "DMG_BURN"
+        3 : "DMG_FREEZE"
+        4 : "DMG_SHOCK"
+        5 : "DMG_PARALYZE"
+        6 : "DMG_RADIATION"
     ]
-    damagehudalt(choices) : "HUD DMG (Secondary)" : DMG_GENERIC =
+	
+    damagehudalt(choices) : "HUD DMG (Secondary)" : 0 =
     [
-        DMG_GENERIC : "No sprite"
-        DMG_ALWAYSGIB : "Always Gib victim"
-        DMG_BURN : "DMG_BURN"
-        DMG_FREEZE : "DMG_FREEZE"
-        DMG_SHOCK : "DMG_SHOCK"
-        DMG_PARALYZE : "DMG_PARALYZE"
-        DMG_RADIATION : "DMG_RADIATION"
+        0 : "No sprite (DMG_GENERIC)"
+        1 : "DMG_ALWAYSGIB"
+        2 : "DMG_BURN"
+        3 : "DMG_FREEZE"
+        4 : "DMG_SHOCK"
+        5 : "DMG_PARALYZE"
+        6 : "DMG_RADIATION"
     ]
     BeamPointer(choices) : "Beam Entity-to-player" : 0 =
     [

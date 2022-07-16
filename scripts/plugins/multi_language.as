@@ -9,68 +9,6 @@ void PluginInit()
     g_Hooks.RegisterHook( Hooks::Player::ClientPutInServer, @ClientPutInServer );
 }
 
-void MapActivated()
-{
-	bool blIsInstalled = g_CustomEntityFuncs.IsCustomEntity( "game_text_custom" );
-
-	if( blIsInstalled )
-	{
-		g_Scheduler.SetInterval( "SpamsMultilanguage", 100, g_Scheduler.REPEAT_INFINITE_TIMES );
-	
-		for( int i = 0; i < g_Engine.maxEntities; ++i )
-		{
-			edict_t@ edict = @g_EntityFuncs.IndexEnt( i );
-			CBaseEntity@ FindGameText = g_EntityFuncs.Instance( edict );
-		}	
-	}
-}
-
-void SpamsMultilanguage()
-{
-	string Available;
-
-    for( int i = 0; i < g_Engine.maxEntities; ++i )
-    {
-        edict_t@ edict = @g_EntityFuncs.IndexEnt( i );
-        CBaseEntity@ FindGameText = g_EntityFuncs.Instance( edict );
-
-        if( FindGameText is null && FindGameText.GetClassname() != "game_text_custom" )
-            continue;
-
-		bool English = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message", "" );
-		bool Spanish = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message_spanish", "" );
-		bool Portuguese = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message_portuguese", "" );
-		bool German = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message_german", "" );
-		bool French = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message_french", "" );
-		bool Italian = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message_italian", "" );
-		bool Esperanto = g_EntityFuncs.DispatchKeyValue( FindGameText.edict(), "message_esperanto", "" );
-
-		if( !English )
-			Available = "English";
-
-		if( !Spanish )
-			Available = Available + " || Spanish";
-
-		if( !Portuguese )
-			Available = Available + " || Portuguese";
-
-		if( !German )
-			Available = Available + " || German";
-
-		if( !French )
-			Available = Available + " || French";
-
-		if( !Italian )
-			Available = Available + " || Italian";
-
-		if( !Esperanto )
-			Available = Available + " || Esperanto";
-    }
-
-	g_PlayerFuncs.ClientPrintAll( HUD_PRINTTALK, "[Multi-Language] This map supports multi-language, use /language (language).\n" );
-	g_PlayerFuncs.ClientPrintAll( HUD_PRINTTALK, "Available:" +Available+ "\n" );
-}
-
 dictionary g_PlayerKeepLenguage;
 
 class PlayerKeepLenguageData
@@ -114,11 +52,12 @@ HookReturnCode ClientPutInServer( CBasePlayer@ pPlayer )
 	}
     else
     {
-     	CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
-	    ckLenguage.SetKeyvalue("$f_lenguage", 0.0);   
+		CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
+		CustomKeyvalue ckLenguageIs = ckLenguage.GetKeyvalue("$f_lenguage");
+		int iLanguage = int(ckLenguageIs.GetFloat());
 
-        PlayerKeepLenguageData pData;
-		pData.lenguage = 0.0;
+		PlayerKeepLenguageData pData;
+		pData.lenguage = iLanguage;
 		g_PlayerKeepLenguage[SteamID] = pData;
     }
 

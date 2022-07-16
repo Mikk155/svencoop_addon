@@ -1,38 +1,40 @@
 "entity"
 {
+"message" "Accept his offer?"
+"m_iszYesString" "No. (hl_c18_a1)"
+"m_iszNoString" "Yes. (end)"
 "classname" "trigger_vote"
-"message" "Accept offer?"
-"frags" "20"
+"frags" "15"
 "health" "51"
-"target" "go_epone"
-"noise" "go_epone"
-"netname" "vote_checked"
-"m_iszYesString" "No. Episode-One"
-"m_iszNoString" "Yes. Half-Life 2 n 3"
-"targetname" "Start_Voting"
-}
-"entity"
-{
-"model" "*103"
-"rendermode" "5"
-"renderamt" "255"
-"angles" "0 270 0"
-"targetname" "blocker_wall"
-"classname" "func_wall"
+"target" "start_loser_mm"
+"noise" "start_loser_mm"
+"netname" "do_not_accept_offer"
+"targetname" "change_to_c5a1"
 }
 "entity"
 {
 "classname" "trigger_relay"
-"targetname" "vote_checked"
-"delay" "2"
-"killtarget" "blocker_wall"
-"target" "changelevel"
+"targetname" "start_loser_mm"
+"target" "changelevel_voted"
+"delay" "21"
 }
 "entity"
 {
 "classname" "trigger_changelevel"
-"targetname" "changelevel"
-"keep_inventory" "1"
-"spawnflags" "2"
 "map" "hl_c18_a1"
+"targetname" "changelevel_voted"
+}
+"entity"
+{
+"classname" "multi_manager"
+"targetname" "do_not_accept_offer"
+"end_mm" "0"
+"spawn_end_mm" "0"
+}
+"entity"
+{
+"model" "*103"
+"classname" "func_wall"
+"rendermode" "4"
+"renderamt" "0"
 }

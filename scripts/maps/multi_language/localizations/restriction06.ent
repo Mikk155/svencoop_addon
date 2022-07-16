@@ -1,5 +1,16 @@
 "entity"
 {
+"message" "activated"
+"message_spanish" "activated"
+"message_portuguese" "activated"
+"message_german" ""
+"message_french" ""
+"message_italian" ""
+"message_esperanto" ""
+"classname" "info_target"
+}
+"entity"
+{
 "message_portuguese" "Voce precisa de um codigo-chave !"
 "message" "You need a keycode !"
 "message_spanish" "Necesitas una clave !"

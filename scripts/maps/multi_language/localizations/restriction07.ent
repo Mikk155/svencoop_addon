@@ -1,5 +1,16 @@
 "entity"
 {
+"message" "activated"
+"message_spanish" "activated"
+"message_portuguese" "activated"
+"message_german" ""
+"message_french" ""
+"message_italian" ""
+"message_esperanto" ""
+"classname" "info_target"
+}
+"entity"
+{
 "message_portuguese" "Bem, eu nao esperava que uma pequena equipe de mercenarios matasse tantos de meus homens... Acho que voce tambem pegou o cientista que eu estava esperando."
 "message" "Well, I didn't expect a small mercenary team to kill so many of my men... I guess you also got the scientist I was waiting for."
 "message_spanish" "Bueno, no esperaba que un equipo chico de mercenarios matara a tantos de mis hombres... \n Supongo que tambien tienes al cientifico que estaba esperando".

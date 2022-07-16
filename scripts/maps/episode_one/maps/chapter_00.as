@@ -1,5 +1,11 @@
+// Count players and enable survival.
+#include "../misc/player_count"
+
 // Checkpoints & Player's lives
 #include "../hooks/Initsave"
+
+// Debuggin triggers
+#include "../debugger"
 
 // BMS-like recharge crystals
 #include "../entity/env_hurtzone"
@@ -13,29 +19,26 @@
 // HLSP AMMUNITION
 #include "../entity/ammo_individual"
 
+// Custom motd for information
+#include "../entity/game_popup"
+
+// Solid zone that trigger something when player press a button
+#include "../entity/zone_caller"
+
 void MapInit()
 {
-	// Checkpoints & Player's lives
+	InitializePlayersCount();
 	TriggerAutoSaveInit();
-
-	// BMS-like recharge crystals
 	RegisterEnvHurtZone();
-
-	// Trigger when in/out
 	RegisterTriggerInOut();
-
-	// Multi-Language entity.
 	MultiLanguageInit();
-
-	// HLSP AMMUNITION
 	RegisterAmmoIndividual();
+	RegisterGamePopupEntity();
+	RegisterZoneCaller();
 }
 
 void MapActivate()
 {
-	// Multi-Language entity.
 	MultiLanguageActivate();
-	
-	// HLSP AMMUNITION
-	// AmmoIndividualRemap(); dont remap. infiite ammo in some places.
+	// AmmoIndividualRemap(); dont remap. infiite ammo is in some places.
 }
