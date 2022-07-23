@@ -1,0 +1,71 @@
+Scripting:
+Gaftherman
+Mikk
+
+Script references
+Outerbeast
+SoloKiller
+CubeMath
+W00tGuy
+
+
+Mapping:
+Mikk
+
+Maps improvemets
+
+Maps references
+CubeMath
+Sparks
+
+Models:
+Victor Cajal
+Zshiryu777
+Ben "DGF" Hanikenne
+Nin10doGMod
+TR-EMIR
+
+some zombies
+Neftall
+
+constructor
+Dakashi Val
+massn
+sebaferrari_tattoo
+
+hgrunt
+Millenia
+
+Textures:
+
+Voices:
+
+Sounds:
+Audio Remaster: @Senn_twt & Stompy
+CakeFish
+Melih Oksuzce
+
+Music:
+Nihilanth battle: asdrummer2008
+Track suspense por ahi: EU Producciones Musicales
+Track 05, 06, 09, 12: Tyler Bates
+Track 07, 08, 15, 18, 19, 20, 21, 25: Vandoorea
+Track 10: Rostislav Rieger
+Track 11: Gin the composer
+Track 13: Zulubo
+Track 14, 22, 23: Avery Alexander
+Track 17: Baboune & Pepito
+Track 24: Harry101UK
+Track 27: Edgar Hopp
+
+History:
+Mikk
+
+Testers:
+
+Localizations
+Mikk
+
+From Lambda team
+Lambda 01, 02: Morzibov (VANCE)
+Lambda 03: Vandoorea

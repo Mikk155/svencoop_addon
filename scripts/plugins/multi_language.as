@@ -9,6 +9,81 @@ void PluginInit()
     g_Hooks.RegisterHook( Hooks::Player::ClientPutInServer, @ClientPutInServer );
 }
 
+EHandle InfoTarget;
+
+void MapStart()
+{
+	bool blIsInstalled = g_CustomEntityFuncs.IsCustomEntity( "game_text_custom" );
+
+	for( int i = 0; i < g_Engine.maxEntities; ++i )
+	{
+		edict_t@ edict = @g_EntityFuncs.IndexEnt(i);
+		CBaseEntity@ FindInfoTarget = g_EntityFuncs.Instance( edict );
+
+		if( FindInfoTarget !is null && FindInfoTarget.pev.classname == "info_target" && FindInfoTarget.pev.targetname == "language" )
+		{
+			InfoTarget = FindInfoTarget;
+		}
+	}
+
+	if( blIsInstalled )
+	{
+		g_Scheduler.SetInterval( "SpamsMultilanguage", 140, g_Scheduler.REPEAT_INFINITE_TIMES );
+	}
+}
+
+void SpamsMultilanguage()
+{
+	string Available = "";
+
+	if( InfoTarget.GetEntity() !is null )
+	{
+		CBaseEntity@ FindInfoTarget = cast<CBaseEntity@>(InfoTarget);
+
+		CustomKeyvalues@ ckLenguage = FindInfoTarget.GetCustomKeyvalues();  
+
+		CustomKeyvalue ckEnglish = ckLenguage.GetKeyvalue("$i_message");
+		CustomKeyvalue ckSpanish = ckLenguage.GetKeyvalue("$i_message_spanish");
+		CustomKeyvalue ckPortuguese = ckLenguage.GetKeyvalue("$i_message_portuguese");
+		CustomKeyvalue ckGerman = ckLenguage.GetKeyvalue( "$i_message_german" );
+		CustomKeyvalue ckFrench = ckLenguage.GetKeyvalue( "$i_message_french" );
+		CustomKeyvalue ckItalian = ckLenguage.GetKeyvalue( "$i_message_italian" );
+		CustomKeyvalue ckEsperanto = ckLenguage.GetKeyvalue( "$i_message_esperanto" );
+
+		int English = ckEnglish.GetInteger();
+		int Spanish = ckSpanish.GetInteger();
+		int Portuguese = ckPortuguese.GetInteger();
+		int German = ckGerman.GetInteger();
+		int French = ckFrench.GetInteger();
+		int Italian = ckItalian.GetInteger();
+		int Esperanto = ckEsperanto.GetInteger();
+
+		if( English == 1 )
+			Available = Available == "" ? "English" : Available + " || " + "English";
+
+		if( Spanish == 1 )
+			Available = Available == "" ? "Spanish" : Available + " || " + "Spanish";
+
+		if( Portuguese == 1 )
+			Available = Available == "" ? "Portuguese" : Available + " || " + "Portuguese";
+
+		if( German == 1 )
+			Available = Available == "" ? "German" : Available + " || " + "German";
+
+		if( French == 1 )
+			Available = Available == "" ? "French" : Available + " || " + "French";
+
+		if( Italian == 1 )
+			Available = Available == "" ? "Italian" : Available + " || " + "Italian";
+
+		if( Esperanto == 1 )
+			Available = Available == "" ? "Esperanto" : Available + " || " + "Esperanto";
+	}
+
+	g_PlayerFuncs.ClientPrintAll( HUD_PRINTTALK, "[Multi-Language] This map supports multi-language, use /language (language).\n" );
+	g_PlayerFuncs.ClientPrintAll( HUD_PRINTTALK, "Available: " +Available+ "\n" );
+}
+
 dictionary g_PlayerKeepLenguage;
 
 class PlayerKeepLenguageData

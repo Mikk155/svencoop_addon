@@ -1,3 +1,4 @@
+// Sentence file for Half-Life: Episode-One
 
 // GMAN
 GM_SUIT mikk/episode_one/gman/gman_suit
@@ -9,3 +10,23 @@ GM_1CHOOSE mikk/episode_one/gman/gman_choose1
 GM_2CHOOSE mikk/episode_one/gman/gman_choose2
 GM_WONTWORK mikk/episode_one/gman/gman_nowork
 GM_REGRET mikk/episode_one/gman/gman_noreg
+
+// Vortigaunts.
+SLV_AWAKE mikk/episode_one/vortigaunt/slv_alert4 slv_alert3
+SLV_IDLE0 mikk/episode_one/vortigaunt/slv_word1 slv_word2
+SLV_IDLE1 mikk/episode_one/vortigaunt/slv_word2 slv_word3(p95)
+SLV_IDLE2 mikk/episode_one/vortigaunt/slv_word3 slv_word4
+SLV_IDLE3 mikk/episode_one/vortigaunt/slv_word4 slv_word5 slv_word5(p90)
+SLV_IDLE4 mikk/episode_one/vortigaunt/slv_word2(p110) slv_word6 slv_word7 slv_word3
+SLV_IDLE5 mikk/episode_one/vortigaunt/slv_word6 slv_word7 slv_word2
+SLV_IDLE6 mikk/episode_one/vortigaunt/slv_word7 slv_word8 slv_word3
+SLV_IDLE7 mikk/episode_one/vortigaunt/slv_word8 slv_word1 slv_word8 slv_word8(p95)
+SLV_IDLE8 mikk/episode_one/vortigaunt/slv_word1(p115) slv_word6
+SLV_IDLE9 mikk/episode_one/vortigaunt/slv_word3 slv_word3(p90)
+SLV_IDLE10 mikk/episode_one/vortigaunt/slv_word7(p85)
+SLV_ALERT0 mikk/episode_one/vortigaunt/(p105) slv_alert1 slv_word2
+SLV_ALERT1 mikk/episode_one/vortigaunt/(p105) slv_word8 slv_word8 slv_word8 slv_word5
+SLV_ALERT2 mikk/episode_one/vortigaunt/(p105) slv_alert4 slv_word4 slv_alert3
+SLV_ALERT3 mikk/episode_one/vortigaunt/(p108) slv_alert1 slv_word5
+SLV_ALERT4 mikk/episode_one/vortigaunt/(p108) slv_word5(p110) slv_word8 slv_word8
+SLV_ALERT5 mikk/episode_one/vortigaunt/(p108) slv_alert4 slv_word7 slv_alert1

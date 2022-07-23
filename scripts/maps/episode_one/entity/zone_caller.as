@@ -51,57 +51,109 @@ class zone_caller : ScriptBaseEntity
 
 			if( Inside( pPlayer ) )
 			{
-				if( m_ilCallType == 0 && pPlayer.pev.button & IN_USE != 0 )
+				if( m_ilCallType == 0 )
 				{
-					self.SUB_UseTargets( self, USE_TOGGLE, 0.0f );
+					if( pPlayer.pev.button & IN_USE != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+						g_Game.AlertMessage(at_console, "Jugador " +pPlayer.pev.netname+ " Dentro :D\n"); 
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[E] What is this?\n");
 				}
-				else if( m_ilCallType == 1 && pPlayer.pev.button & IN_DUCK != 0 )
+				else if( m_ilCallType == 1  )
 				{
+					if( pPlayer.pev.button & IN_DUCK != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[CONTROL]\n");
 				}
-				else if( m_ilCallType == 2 && pPlayer.pev.button & IN_ATTACK != 0 )
+				else if( m_ilCallType == 2 )
 				{
+					if( pPlayer.pev.button & IN_ATTACK != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[MOUSE 1]\n");
 				}
-				else if( m_ilCallType == 3 && pPlayer.pev.button & IN_JUMP != 0 )
+				else if( m_ilCallType == 3 )
 				{
+					if( pPlayer.pev.button & IN_JUMP != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[SPACE]\n");
 				}
-				else if( m_ilCallType == 4 && pPlayer.pev.button & IN_FORWARD != 0 )
+				else if( m_ilCallType == 4 )
 				{
+					if( pPlayer.pev.button & IN_FORWARD != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[W]\n");
 				}
-				else if( m_ilCallType == 5 && pPlayer.pev.button & IN_BACK != 0 )
+				else if( m_ilCallType == 5 )
 				{
+					if( pPlayer.pev.button & IN_BACK != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[S]\n");
 				}
-				else if( m_ilCallType == 6 && pPlayer.pev.button & IN_ATTACK2 != 0 )
+				else if( m_ilCallType == 6 )
 				{
+					if( pPlayer.pev.button & IN_ATTACK2 != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[MOUSE 2]\n");
 				}
-				else if( m_ilCallType == 7 && pPlayer.pev.button & IN_RUN != 0 )
+				else if( m_ilCallType == 7 )
 				{
+					if( pPlayer.pev.button & IN_RUN != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[SHIFT]\n");
 				}
-				else if( m_ilCallType == 8 && pPlayer.pev.button & IN_ALT1 != 0 )
+				else if( m_ilCallType == 8 )
 				{
+					if( pPlayer.pev.button & IN_ALT1 != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[MOUSE 3]\n");
 				}
-				else if( m_ilCallType == 9 && pPlayer.pev.button & IN_SCORE != 0 )
+				else if( m_ilCallType == 9 )
 				{
+					if( pPlayer.pev.button & IN_SCORE != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[TAB]\n");
 				}
-				else if( m_ilCallType == 10 && pPlayer.pev.button & IN_RELOAD != 0 )
+				else if( m_ilCallType == 10 )
 				{
+					if( pPlayer.pev.button & IN_RELOAD != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[R]\n");
 				}
-				else if( m_ilCallType == 11 && pPlayer.pev.button & IN_MOVERIGHT != 0 )
+				else if( m_ilCallType == 11 )
 				{
+					if( pPlayer.pev.button & IN_MOVERIGHT != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[D]\n");
 				}
-				else if( m_ilCallType == 12 && pPlayer.pev.button & IN_MOVELEFT != 0 )
+				else if( m_ilCallType == 12 )
 				{
+					if( pPlayer.pev.button & IN_MOVELEFT != 0 )
+					{
+						self.SUB_UseTargets( pPlayer, USE_TOGGLE, 0.0f );
+					}
 					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"[A]\n");
 				}
 			}

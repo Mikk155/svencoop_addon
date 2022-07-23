@@ -1,0 +1,27 @@
+@BaseClass = EntVolume
+[
+    targetname(target_source) : "Name"
+	intarget(target_destination) : "In-count-Target"
+	incount(string) : "In-count"
+	outtarget(target_destination) : "Out-count-Target"
+	target_outcount_fail(string) : "Out-count-fail-target"
+	target_incount_fail(string) : "In-count-fail-target"
+	outcount(string) : "Out-count"
+
+    spawnflags(flags) =
+    [
+        1: "Ignore Dead Plr" : 0
+        2: "Start Inactive" : 0
+        8: "No players" : 0
+        32: "Monsters" : 0
+    ]
+]
+
+@PointClass base(EntVolume) size(8 8 8) color(255 0 0) = trigger_entity_volume : "GZM but better"
+[
+	zoneradius(string) : "Radius"
+	zonecornermin(string) : "Custom Min Hull Size (X Y Z)"
+	zonecornermax(string) : "Custom Max Hull Size (X Y Z)"
+]
+
+@SolidClass base(EntVolume) = trigger_entity_volume : "GZM but better"[]

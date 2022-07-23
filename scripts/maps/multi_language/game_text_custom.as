@@ -18,7 +18,7 @@ class game_text_custom : ScriptBaseEntity
 {
 	HUDTextParams TextParams;
 	private string_t message_spanish, message_portuguese, message_german, message_french, message_italian, message_esperanto;
-
+		
 	void Spawn() 
 	{
 		self.pev.solid = SOLID_NOT;
@@ -146,48 +146,47 @@ class game_text_custom : ScriptBaseEntity
 		
 	void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue)
 	{
-		if( !pActivator.IsPlayer() )
-			return;
-
-		CBasePlayer@ pPlayer = cast<CBasePlayer@>(pActivator);
-
-        CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
-        CustomKeyvalue ckLenguageIs = ckLenguage.GetKeyvalue("$f_lenguage");
-        int iLanguage = int(ckLenguageIs.GetFloat());
-
 		if( self.pev.SpawnFlagBitSet(SF_ALL_PLAYERS) )
 		{
 			for( int iPlayer = 1; iPlayer <= g_PlayerFuncs.GetNumPlayers(); ++iPlayer )
 			{
-				CBasePlayer@ pPlayer2 = g_PlayerFuncs.FindPlayerByIndex( iPlayer );
+				CBasePlayer@ pPlayer = g_PlayerFuncs.FindPlayerByIndex( iPlayer );
+				CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
+				CustomKeyvalue ckLenguageIs = ckLenguage.GetKeyvalue("$f_lenguage");
+				int iLanguage = int(ckLenguageIs.GetFloat());	
 						
-				if( pPlayer2 is null || !pPlayer2.IsConnected() )
+				if( pPlayer is null || !pPlayer.IsConnected() )
 					continue;
 
 				if(iLanguage == LANGUAGE_ENGLISH)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, self.pev.message );
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, self.pev.message );
 					
 				if(iLanguage == LANGUAGE_SPANISH)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, message_spanish );	
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, message_spanish );	
 
 				if(iLanguage == LANGUAGE_PORTUGUESE)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, message_portuguese );	
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, message_portuguese );	
 
 				if(iLanguage == LANGUAGE_GERMAN)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, message_german );	
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, message_german );	
 
 				if(iLanguage == LANGUAGE_FRENCH)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, message_french );	
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, message_french );	
 
 				if(iLanguage == LANGUAGE_ITALIAN)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, message_italian );		
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, message_italian );		
 
 				if(iLanguage == LANGUAGE_ESPERANTO)
-					g_PlayerFuncs.HudMessage( pPlayer2, TextParams, message_esperanto );		
+					g_PlayerFuncs.HudMessage( pPlayer, TextParams, message_esperanto );		
 			}
 		}
-		else
+		else if( pActivator !is null && pActivator.IsPlayer() )
 		{
+			CBasePlayer@ pPlayer = cast<CBasePlayer@>(pActivator);
+			CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
+			CustomKeyvalue ckLenguageIs = ckLenguage.GetKeyvalue("$f_lenguage");
+			int iLanguage = int(ckLenguageIs.GetFloat());
+
 			if(iLanguage == LANGUAGE_ENGLISH)
 				g_PlayerFuncs.HudMessage( pPlayer, TextParams, self.pev.message );
 

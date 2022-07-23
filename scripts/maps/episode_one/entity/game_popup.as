@@ -9,16 +9,76 @@ Setting flag 1 will make the popup display for all players.
 Keys:-
 "classname" "game_popup"
 "netname" "Title goes here" - Title key
-"message" "Text goes here" - Main body text key. A specific file can be used using the "+" prefix followed by the path starting from "scripts/maps/store/"
 "spawnflags" "1" - All players receive the popup, not just the activator
+
+EDIT-: see how game_text_custom works and use this based on the same method.
+
+"message" "Text goes here" - Main body text key.
+"message_spanish". bla bla. etc. etc. same languages -Mikk
 */
 void RegisterGamePopupEntity()
 {
     g_CustomEntityFuncs.RegisterCustomEntity( "game_popup", "game_popup" );
 }
 
+enum EnumLanguage
+{
+	LANGUAGE_ENGLISH = 0, 
+	LANGUAGE_SPANISH,
+	LANGUAGE_PORTUGUESE,	
+	LANGUAGE_GERMAN,
+	LANGUAGE_FRENCH,
+	LANGUAGE_ITALIAN,
+	LANGUAGE_ESPERANTO	
+}
+
+enum EnumSpawnFlags
+{
+	SF_GP_ALL_PLAYERS = 1 << 0
+}
+
 class game_popup : ScriptBaseEntity
 {
+	private string_t message_spanish, message_portuguese, message_german, message_french, message_italian, message_esperanto;
+
+	bool KeyValue( const string& in szKey, const string& in szValue )
+	{
+		if(szKey == "message_spanish")
+		{
+			message_spanish = szValue;
+			return true;
+		}
+		else if(szKey == "message_portuguese")
+		{
+			message_portuguese = szValue;
+			return true;
+		}
+		else if(szKey == "message_german")
+		{
+			message_german = szValue;
+			return true;
+		}
+		else if(szKey == "message_french")
+		{
+			message_french = szValue;
+			return true;
+		}
+		else if(szKey == "message_italian")
+		{
+			message_italian = szValue;
+			return true;
+		}
+		else if(szKey == "message_esperanto")
+		{
+			message_esperanto = szValue;
+			return true;
+		}
+		else 
+		{
+			return BaseClass.KeyValue( szKey, szValue );
+		}
+	}
+	
     void Spawn()
 	{
 		self.pev.movetype 	= MOVETYPE_NONE;
@@ -26,15 +86,8 @@ class game_popup : ScriptBaseEntity
 		g_EntityFuncs.SetOrigin( self, self.pev.origin );
 
         if( self.pev.netname == "" )
-            self.pev.netname = "Title";
-
-        if( string( self.pev.message ).StartsWith( '+' ) )
-        {
-            string temp = string( self.pev.message );
-            temp.Trim( "+" );
-			self.pev.message = ReadWholeFile( "scripts/maps/episode_one/motd/english/" + temp  + ".txt");
-        }
-
+            self.pev.netname = "Info";
+		
         BaseClass.Spawn();
 	}
 
@@ -106,16 +159,71 @@ class game_popup : ScriptBaseEntity
         restore.End();
     }
 
-    void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue)
-    {
-        if( pActivator !is null && pActivator.IsPlayer() && !self.pev.SpawnFlagBitSet( 1 ) )
-            ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( self.pev.message ) );
-        else
-        {
-            for( int playerID = 1; playerID <= g_PlayerFuncs.GetNumPlayers(); playerID++ )
-                ShowMOTD( g_PlayerFuncs.FindPlayerByIndex( playerID ), string( self.pev.netname ), string( self.pev.message ) );
-        }
+	void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float flValue)
+	{
+		if( self.pev.SpawnFlagBitSet(SF_GP_ALL_PLAYERS) )
+		{
+			for( int iPlayer = 1; iPlayer <= g_PlayerFuncs.GetNumPlayers(); ++iPlayer )
+			{
+				CBasePlayer@ pPlayer = g_PlayerFuncs.FindPlayerByIndex( iPlayer );
+				CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
+				CustomKeyvalue ckLenguageIs = ckLenguage.GetKeyvalue("$f_lenguage");
+				int iLanguage = int(ckLenguageIs.GetFloat());	
+						
+				if( pPlayer is null || !pPlayer.IsConnected() )
+					continue;
 
+				if(iLanguage == LANGUAGE_ENGLISH)
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( self.pev.message ) );
+					
+				if(iLanguage == LANGUAGE_SPANISH)
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( message_spanish ) );
+
+				if(iLanguage == LANGUAGE_PORTUGUESE)
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( message_portuguese ) );
+
+				if(iLanguage == LANGUAGE_GERMAN)
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( message_german ) );
+
+				if(iLanguage == LANGUAGE_FRENCH)
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( message_french ) );
+
+				if(iLanguage == LANGUAGE_ITALIAN)
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( message_italian ) );	
+
+				if(iLanguage == LANGUAGE_ESPERANTO)	
+					ShowMOTD(pPlayer, string( self.pev.netname ), string( message_esperanto ) );
+			}
+		}
+		else if( pActivator !is null && pActivator.IsPlayer() )
+		{
+			CBasePlayer@ pPlayer = cast<CBasePlayer@>(pActivator);
+			CustomKeyvalues@ ckLenguage = pPlayer.GetCustomKeyvalues();
+			CustomKeyvalue ckLenguageIs = ckLenguage.GetKeyvalue("$f_lenguage");
+			int iLanguage = int(ckLenguageIs.GetFloat());
+
+			if(iLanguage == LANGUAGE_ENGLISH)
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( self.pev.message ) );
+
+			if(iLanguage == LANGUAGE_SPANISH)	
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( message_spanish ) );
+
+			if(iLanguage == LANGUAGE_PORTUGUESE)
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( message_portuguese ) );
+
+			if(iLanguage == LANGUAGE_GERMAN)
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( message_german ) );
+
+			if(iLanguage == LANGUAGE_FRENCH)
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( message_french ) );
+
+			if(iLanguage == LANGUAGE_ITALIAN)
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( message_italian ) );
+
+			if(iLanguage == LANGUAGE_ESPERANTO)
+				ShowMOTD( cast<CBasePlayer@>( pActivator ), string( self.pev.netname ), string( message_esperanto ) );
+		}
+		
         self.SUB_UseTargets( pActivator, USE_TOGGLE, 0.0f );
-    }
+	}
 }

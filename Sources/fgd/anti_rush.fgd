@@ -1,13 +1,4 @@
-@SolidClass = ar_func_wall : "Wall"
-[
-	targetname(target_source) : "Name"
-	spawnflags(flags) =
-	[
-		1 : "Starts Invisible" : 0
-	]
-]
-
-@SolidClass = ar_trigger_once : "Player Condition Brush"
+@SolidClass = trigger_once_mp : "Player Condition Brush"
 [
 	targetname(target_source) : "Name"
 	target(target_destination) : "Target"
@@ -17,7 +8,7 @@
 		1: "Start Off" : 0
 	]
 ]
-@PointClass size(-6 -6 -6, 6 6 6) color(255 0 0) = ar_trigger_once : "Player Condition Point"
+@PointClass size(-6 -6 -6, 6 6 6) color(255 0 0) = trigger_once_mp : "Player Condition Point"
 [
 	targetname(target_source) : "Name"
 	target(target_destination) : "Target"

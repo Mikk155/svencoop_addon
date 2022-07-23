@@ -1,14 +1,15 @@
-@PointClass size(8 8 8) color(255 0 0) = game_popup : "Popup a message"
+@PointClass color(192 255 0) = game_popup : "Custom motd message"
 [
-    targetname(target_source) : "Name"
-    netname(string) : "Tittle"
-	message(string) : "Body (English)"
-	message_spanish(string) : "Body (Spanish)"
-	message_portuguese(string) : "Body (Portuguese)"
-	message_french(string) : "Body (French)French"
-	message_italian(string) : "Body (Italian)Italian"
-    spawnflags(flags) =
-    [
-        1: "All players" : 0
-    ]
+	targetname(target_source) : "Name"
+	spawnflags(flags) =
+	[
+		1: "All Players" : 0
+	]
+	message(string) : "MSG: Default/english"
+	message_spanish(string) : "MSG: Spanish"
+	message_portuguese(string) : "MSG: Portuguese"
+	message_german(string) : "MSG: Germany"
+	message_french(string) : "MSG: French"
+	message_italian(string) : "MSG: Italian"
+	message_esperanto(string) : "MSG: Esperanto"
 ]

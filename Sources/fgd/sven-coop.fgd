@@ -26,9 +26,9 @@
 		1 : "Yes"
 	]
 	sentence_file(string) : "Custom Sentences File" : "sound/mikk/episode_one/sentences.txt"
-	materials_file(string) : "Custom Materials File" : "sound/mikk/episode_one/materials.txt"
-	globalsoundlist(string) : "Global Sound Replacement File" : "../../maps/hl_episodic_global.gsr"
-	globalmodellist(string) : "Global Model Replacement File" : "../../maps/hl_episodic_global.gmr"
+	materials_file(string) : "Custom Materials File" : "../mikk/episode_one/materials.txt"
+	globalsoundlist(string) : "Global Sound Replacement File" : "../mikk/episode_one/hl_episodic_global.gsr"
+	globalmodellist(string) : "Global Model Replacement File" : "../mikk/episode_one/hl_episodic_global.gmr"
 	forcepmodels(string) : "Force Player Models a;b;c etc" : "gordon"
 ]
 
@@ -3656,16 +3656,6 @@
 	]
 ]
 
-@PointClass base(Monster) size(-40 -40 0, 40 40 64) studio("models/baby_voltigore.mdl") = monster_alien_babyvoltigore : "Baby Voltigore"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-]
-
-
 @PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/controller.mdl") = monster_alien_controller : "Controller"  []
 
 @PointClass base(Monster) size(-32 -32 0, 32 32 64) studio("models/agrunt.mdl") = monster_alien_grunt : "Alien Grunt"
@@ -3686,26 +3676,7 @@
 	]
 ]
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/islave.mdl") = monster_alien_slave : "Vortigaunt"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-		64 : "IgnorePlayer" : 0
-	]
-]
-
 @PointClass base(Monster) size(-32 -32 0, 32 32 64) studio("models/Tor.mdl") = monster_alien_tor : "Alien Tor"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-]
-
-@PointClass base(Monster) size(-80 -80 0, 80 80 90) studio("models/voltigore.mdl") = monster_alien_voltigore : "Voltigore"
 [
 	netname(string) : "Squad Name"
 	spawnflags(Flags) =
@@ -3723,82 +3694,9 @@
 	]
 ]
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/massn.mdl") = monster_assassin_repel : "Male Assassin (Repel)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	weapons(Choices) : "Weapons" : 3 =
-	[
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Sniper Rifle"
-		10 : "Sniper Rifle + HG"
-		32 : "No Weapons"
-		256 : "Sniper - No drop"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 47 =
-	[
-		47 : "repel_repel"
-	]
-
-]
-
 @PointClass base(Monster) size(-16 -16 0, 16 16 36) studio("models/baby_headcrab.mdl") = monster_babycrab : "Baby Headcrab" []
 
-@PointClass base(Monster) size(-32 -32 0, 32 32 128) studio("models/babygarg.mdl") = monster_babygarg : "Baby Gargantua" []
-
-
-
-@PointClass base(Monster) size(-16 -16 -36, 16 16 0) studio("models/barnacle.mdl") = monster_barnacle : "Barnacle Monster" []
-
-@PointClass base(Monster, TalkMonster) size(-16 -16 0, 16 16 72) studio("models/barney.mdl") = monster_barney : "Barney"
-[
-	sequence(Choices) : "Animation Sequence (editor)" : 0 =
-	[
-		0 : "idle1"
-		19 : "locked_door"
-		21 : "barn_Wave"
-		22 : "beat_grunt"
-		23 : "beat_gruntidle"
-		24 : "flashlight"
-		38 : "stuffed_in_vent"
-		40 : "cprbarney"
-		41 : "cprbarneyrevive"
-		42 : "barney_dragvent"
-		43 : "dying_barney"
-		44 : "dying_barneyidle"
-		45 : "dying_friend"
-		46 : "dying_friendidle"
-		47 : "c1a3_bidle"
-		48 : "c1a3_ventb"
-		49 : "c1a3_emergeidle"
-		50 : "c1a3_emerge"
-		51 : "haulbarney"
-		52 : "intropush"
-		53 : "fence"
-		54 : "sit1"
-		55 : "almostidle"
-		56 : "almost"
-		57 : "laseridle"
-		58 : "laser_top"
-		59 : "laser_bottom"
-		60 : "barneyfallidle"
-		61 : "barneyfall"
-		62 : "c3a2_draw"
-		63 : "unlatch"
-		64 : "retina"
-		65 : "relaxstand"
-		66 : "assassinated"
-		67 : "trackswitch"
-		68 : "pepsiswing"
-		69 : "pepsipush"
-		70 : "buttonpush"
-	]
-]
+@PointClass base(Monster) size(-16 -16 -36, 16 16 0) studio("models/mikk/episode_one/npc/xen/barnacle.mdl") = monster_barnacle : "Barnacle Monster" []
 
 @PointClass base(RenderFields, Appearflags, Angles) size(-16 -16 0, 16 16 72) studio("models/barney.mdl") = monster_barney_dead : "Dead Barney"
 [
@@ -3827,110 +3725,7 @@
 	]
 ]
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/floater.mdl") = monster_bloater : "Bloater" []
-
-@PointClass base(Monster) size(-32 -32 0, 32 32 64) studio("models/bullsquid.mdl") = monster_bullchicken : "BullChicken" []
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 36) studio("models/chubby.mdl") = monster_chumtoad : "Chumtoad" []
-
-@PointClass base(Monster, TalkMonster) size(-16 -16 0, 16 16 72) studio("models/cleansuit_scientist.mdl") = monster_cleansuit_scientist : "Cleansuit Scientist"
-[
-	body(Choices) : "Body" : -1 =
-	[
-		-1 : "Random"
-		0 : "Glasses"
-		1 : "Einstein"
-		2 : "Luther"
-		3 : "Slick"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 13 =
-	[
-		13 : "idle1"
-		27 : "eye_wipe"
-		28 : "pull_needle"
-		29 : "return_needle"
-		30 : "give_shot"
-		41 : "germandeath"
-		48 : "console"
-		49 : "dryhands"
-		50 : "tieshoe"
-		51 : "whiteboard"
-		52 : "studycart"
-		53 : "lean"
-		54 : "pondering"
-		55 : "pondering2"
-		56 : "pondering3"
-		57 : "buysoda"
-		61 : "push_button"
-		62 : "converse1"
-		63 : "converse2"
-		64 : "retina"
-		65 : "talkleft"
-		66 : "talkright"
-		67 : "deskidle"
-		68 : "coffee"
-		69 : "franticbutton"
-		71 : "scientist_throwna"
-		72 : "scientist_thrownb"
-		73 : "scientist_beatwindow"
-		75 : "scientist_zombiefear"
-		77 : "teleport_fidget"
-		79 : "sitlookleft"
-		80 : "sitlookright"
-		81 : "sitscared"
-		82 : "sitting2"
-		83 : "sitting3"
-		84 : "cprscientist"
-		85 : "cprscientistrevive"
-		86 : "cowering_in_corner"
-		87 : "sstruggleidle"
-		88 : "sstruggle"
-		89 : "headcrabbed"
-		90 : "c1a0_catwalkidle"
-		91 : "c1a0_catwalk"
-		92 : "ceiling_dangle"
-		93 : "ventpull1"
-		94 : "ventpull2"
-		95 : "ventpullidle1"
-		96 : "ventpullidle2"
-		97 : "sitidle"
-		98 : "sitstand"
-		99 : "keypad"
-		101 : "lookwindow"
-		102 : "wave"
-		103 : "pulldoor"
-		104 : "beatdoor"
-		105 : "fallingloop"
-		106 : "crawlwindow"
-		107 : "divewindow"
-		108 : "locked_door"
-		109 : "push_button2"
-		110 : "unlock_door"
-		112 : "handrailidle"
-		113 : "handrail"
-		114 : "hanging_idle"
-		115 : "fall"
-		116 : "scientist_get_pulled"
-		117 : "hanging_idle2"
-		118 : "fall_elevator"
-		119 : "scientist_idlewall"
-		120 : "ickyjump_sci"
-		121 : "haulscientist"
-		122 : "c1a4_wounded_idle"
-		123 : "c1a4_dying_speech"
-		124 : "tentacle_grab"
-		125 : "helicack"
-		126 : "windive"
-		127 : "scicrashidle"
-		128 : "scicrash"
-		129 : "onguard"
-		130 : "seeya"
-		131 : "rocketcrawl"
-		132 : "portal"
-		133 : "gluonshow"
-		135 : "kneel"
-	]
-]
+@PointClass base(Monster) size(-32 -32 0, 32 32 64) studio("models/mikk/episode_one/npc/xen/bullsquid.mdl") = monster_bullchicken : "BullChicken" []
 
 @PointClass base(Monster) size(-3 -3 0, 3 3 3) studio("models/roach.mdl") = monster_cockroach : "Cockroach" []
 
@@ -3952,70 +3747,9 @@
 	]
 ]
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/gman.mdl") = monster_gman : "G-Man" []
+@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/mikk/episode_one/npc/gman.mdl") = monster_gman : "G-Man" []
 
 @PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/gonome.mdl") = monster_gonome : "Gonome" []
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hgrunt_opfor.mdl") = monster_grunt_ally_repel : "Human Grunt Ally (Repel)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	weapons(Choices) : "Weapons" : 3 =
-	[
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Shotgun"
-		10 : "Shotgun + HG"
-		16 : "Saw"
-	]
-	head(Choices) : "Heads" : -1 =
-	[
-		-1 : "Default"
-		0 : "Gas Mask"
-		1 : "Beret"
-		2 : "Ops Mask"
-		3 : "Bandana White"
-		4 : "Bandana Black"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 51 =
-	[
-		51 : "repel_repel"
-	]
-]
-
-
-
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hgrunt.mdl") = monster_grunt_repel : "Human Grunt (Repel)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Shotgun"
-		10 : "Shotgun + HG"
-		64 : "Rocket Launcher"
-		66 : "Rocket Launcher + HG"
-		128 : "Sniper Rifle"
-		130 : "Sniper Rifle + HG"
-	]
-
-	sequence(Choices) : "Animation Sequence (editor)" : 50 =
-	[
-		50 : "repel_repel"
-	]
-]
 
 @PointClass base(RenderFields, Appearflags, Angles) = monster_handgrenade : "Live Handgrenade"
 [
@@ -4023,7 +3757,7 @@
 	new_model(studio) : "Custom Model" : ""
 ]
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 36) studio("models/headcrab.mdl") = monster_headcrab : "Head Crab" []
+@PointClass base(Monster) size(-16 -16 0, 16 16 36) studio("models/mikk/episode_one/npc/zombie/headcrab.mdl") = monster_headcrab : "Head Crab" []
 
 @PointClass base(Appearflags, RenderFields, Angles) size(-16 -16 0, 16 16 72) studio("models/player.mdl") = monster_hevsuit_dead : "Dead HEV Suit"
 [
@@ -4044,30 +3778,6 @@
 	model(studio) : "Custom Model"
 ]
 
-@PointClass base(Appearflags, RenderFields, Angles) size(-16 -16 0, 16 16 72) studio("models/hgrunt.mdl") = monster_hgrunt_dead : "Dead Human Grunt"
-[
-	pose(Choices) : "Pose" : 0 =
-	[
-		0 : "On stomach"
-		1 : "On side"
-		2 : "Seated"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 46 =
-	[
-		46 : "On stomach"
-		47 : "On side"
-		48 : "Seated"
-	]
-	body(Choices) : "Body" : 0 =
-	[
-		0 : "Grunt with Gun"
-		1 : "Commander with Gun"
-		2 : "Grunt no Gun"
-		3 : "Commander no Gun"
-	]
-	model(studio) : "Custom Model"
-]
-
 @PointClass base(Monster) size(-16 -16 0, 16 16 36) studio("models/houndeye.mdl") = monster_houndeye : "Houndeye"
 [
 	netname(string) : "Squad Name"
@@ -4077,234 +3787,13 @@
 	]
 ]
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hassassin.mdl") = monster_human_assassin : "Human Assassin" []
+@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/mikk/episode_one/npc/human/hassassin.mdl") = monster_human_assassin : "Human Assassin" []
 
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hgrunt.mdl") = monster_human_grunt : "Human Grunt (camo)"
-[
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	netname(string) : "Squad Name"
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		1  : "MP5"
-		3  : "MP5 + HG"
-		5  : "M16 + GL"
-		8  : "Shotgun"
-		10 : "Shotgun + HG"
-		64 : "Rocket Launcher"
-		66 : "Rocket Launcher + HG"
-		128 : "Sniper Rifle"
-		130 : "Sniper Rifle + HG"
-	]
-]
+@PointClass base(Monster) size(-32 -32 0, 32 32 64) studio("models/mikk/episode_one/npc/alien/icky.mdl") = monster_ichthyosaur : "Ichthyosaur" []
 
-@PointClass base(Monster, TalkMonster) size(-16 -16 0, 16 16 72) studio("models/hgruntf.mdl") = monster_human_grunt_ally : "Human Grunt Ally (camo)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	weapons(Choices) : "Weapons" : 3 =
-	[
-		0 : "Default"
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Shotgun"
-		10 : "Shotgun + HG"
-		16 : "Saw"
-		32 : "None"
-	]
-	head(Choices) : "Heads" : -1 =
-	[
-		-1 : "Default"
-		0 : "Gas Mask"
-		1 : "Beret"
-		2 : "Ops Mask"
-		3 : "Bandana White"
-		4 : "Bandana Black"
-		5 : "MP"
-		6 : "Major"
-		7 : "Beret (Black)"
-	]
-]
+@PointClass base(Monster) size(-6 -6 0, 6 6 6) studio("models/mikk/episode_one/npc/alien/leech.mdl") = monster_leech : "Leech" []
 
-@PointClass base(Targetname, Appearflags, RenderFields, Angles) size(-16 -16 0, 16 16 72) studio("models/hgruntf.mdl") = monster_human_grunt_ally_dead : "Dead Human Grunt Ally"
-[
-	pose(Choices) : "Pose" : 0 =
-	[
-		0 : "On stomach"
-		1 : "On side"
-		2 : "Seated"
-		3 : "Dead On Back"
-		4 : "Dead On Stomach"
-		5 : "Head Crabbed"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 44 =
-	[
-		44 : "On stomach"
-		45 : "On side"
-		46 : "Seated"
-	]
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		0 : "None"
-		1 : "M16"
-		8 : "Shotgun"
-		16 : "Saw"
-	]
-	head(Choices) : "Heads" : 0 =
-	[
-		0 : "Gas Mask"
-		1 : "Beret"
-		2 : "Ops Mask"
-		3 : "Bandana White"
-		4 : "Bandana Black"
-		5 : "MP"
-	]
-	model(studio) : "Custom Model"
-]
-
-@PointClass base(Monster, TalkMonster) size(-16 -16 0, 16 16 72) studio("models/hgrunt_medicf.mdl") = monster_human_medic_ally : "Medic"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	head(Choices) : "Heads" : -1 =
-	[
-		-1 : "Random"
-		0 : "White"
-		1 : "Black"
-	]
-	weapons(Choices) : "Weapons" : 2 =
-	[
-		0 : "None"
-		1 : "Desert Eagle"
-		2 : "9mm Handgun"
-		4 : "Hypodermic Needle"
-	]
-]
-
-@PointClass base(Monster, TalkMonster) size(-16 -16 0, 16 16 72) studio("models/hgrunt_torchf.mdl") = monster_human_torch_ally : "Torch"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		1 : "Desert Eagle"
-		2 : "Blow Torch"
-	]
-]
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hwgrunt.mdl") = monster_hwgrunt : "Heavy Weapons Grunt"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-
-	weapons(Choices) : "Secondary Weapon" : 1 =
-	[
-		0 : "Random Pistol"
-		1 : "Glock"
-		2 : "Desert Eagle"
-		3 : "357 Python"
-	]
-
-	disable_minigun_drop(Choices) : "Disable Minigun Drop" : 1 =
-	[
-		0 : "No (default)"
-		1 : "Yes"
-	]
-
-]
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hwgrunt.mdl") = monster_hwgrunt_repel : "Heavy Weapons Grunt (Repel)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 14 =
-	[
-		14 : "repel_repel"
-	]
-	weapons(Choices) : "Drop Minigun" : 0 =
-	[
-		0 : "Yes (on death)"
-		256 : "No"
-	]
-]
-
-@PointClass base(Monster) size(-32 -32 0, 32 32 64) studio("models/icky.mdl") = monster_ichthyosaur : "Ichthyosaur" []
-
-@PointClass base(Monster) size(-24 -24 0, 24 24 112) studio("models/kingpin.mdl") = monster_kingpin : "Kingpin" []
-
-@PointClass base(Monster) size(-6 -6 0, 6 6 6) studio("models/leech.mdl") = monster_leech : "Leech" []
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/massn.mdl") = monster_male_assassin : "Male Assassin"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	head(Choices) : "Heads" : 0 =
-	[
-		-1 : "Random"
-		0 : "Ski Mask White"
-		1 : "Ski Mask Black"
-		2 : "Night Goggles"
-	]
-	weapons(Choices) : "Weapons" : 3 =
-	[
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Sniper Rifle"
-		10 : "Sniper Rifle + HG"
-		32 : "No Weapons"
-		256 : "Sniper - No drop"
-	]
-]
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hgrunt_medicf.mdl") = monster_medic_ally_repel : "Human Medic Ally (Repel)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	head(Choices) : "Heads" : -1 =
-	[
-		-1 : "Random"
-		0 : "White"
-		1 : "Black"
-	]
-	weapons(Choices) : "Weapons" : 2 =
-	[
-		0 : "None"
-		1 : "Desert Eagle"
-		2 : "9mm Handgun"
-		4 : "Hypodermic Needle"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 41 =
-	[
-		41 : "repel_repel"
-	]
-]
-
-@PointClass base(Monster) size(-16 -16 -32, 16 16 32) studio("models/miniturret.mdl") = monster_miniturret : "Mini Auto Turret"
+@PointClass base(Monster) size(-16 -16 -32, 16 16 32) studio("models/mikk/episode_one/npc/human/miniturret.mdl") = monster_miniturret : "Mini Auto Turret"
 [
 	orientation(Choices) : "Orientation" : 0 =
 	[
@@ -4321,7 +3810,7 @@
 	attackrange(integer) : "Max Attack Range" : 1200
 ]
 
-@PointClass base(Monster) size(-192 -192 0, 192 192 384) studio("models/nihilanth.mdl") = monster_nihilanth : "Nihilanth"  []
+@PointClass base(Monster) size(-192 -192 0, 192 192 384) studio("models/mikk/episode_one/npc/nihilanth.mdl") = monster_nihilanth : "Nihilanth"  []
 
 @PointClass base(Monster) size(-480 -480 -112, 480 480 24) studio("models/osprey.mdl") = monster_osprey : "Osprey"
 [
@@ -4351,52 +3840,6 @@
 	num(integer) : "(Override) Number of Grunts" : 0
 ]
 
-@PointClass base(Monster, TalkMonster) size(-16 -16 0, 16 16 72) studio("models/otis.mdl") = monster_otis : "Otis"
-[
-	bodystate(Choices) : "bodystate" : -1 =
-	[
-		-1 : "Random"
-		0 : "Gun Holstered"
-		1 : "Gun Drawn"
-		3 : "Donut"
-	]
-	head(Choices) : "head" : -1 =
-	[
-		-1 : "Random"
-		0 : "Bald Head"
-		1 : "Head with hair"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 0 =
-		[
-			0 : "idle1"
-			19 : "locked_door"
-			21 : "barn_Wave"
-			22 : "beat_grunt"
-			23 : "beat_gruntidle"
-			24 : "flashlight"
-			41 : "cprbarney"
-			42 : "cprbarneyrevive"
-			43 : "barney_dragvent"
-			44 : "dying_barney"
-			45 : "dying_barneyidle"
-			46 : "dying_friend"
-			47 : "dying_friendidle"
-			48 : "c1a3_bidle"
-			49 : "intropush"
-			50 : "fence"
-			51 : "wave"
-			52 : "unlatch"
-			53 : "retina"
-			54 : "relaxstand"
-			55 : "trackswitch"
-			56 : "pepsiswing"
-			57 : "pepsipush"
-			58 : "buttonpush"
-			59 : "cowering"
-			60 : "candygrab"
-	]
-]
-
 @PointClass base(RenderFields, Appearflags, Angles) size(-16 -16 0, 16 16 72) studio("models/otis.mdl") = monster_otis_dead : "Dead Otis"
 [
 	pose(Choices) : "Pose" : 0 =
@@ -4416,51 +3859,6 @@
 		39 : "dead_sitting"
 	]
 	model(studio) : "Custom Model"
-]
-
-@PointClass base(Monster) size(-24 -24 0, 24 24 32) studio("models/pit_drone.mdl") = monster_pitdrone : "Pit Drone"
-[
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	netname(string) : "Squad Name"
-	initammo(string) : "Initial Ammo" : "6"
-]
-
-@PointClass base(Monster) size(-6 -6 0, 6 6 6) studio("models/bigrat.mdl") = monster_rat : "Rat" []
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/rgrunt.mdl") = monster_robogrunt : "Robot Grunt"
-[
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	netname(string) : "Squad Name"
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Shotgun"
-		10 : "Shotgun + HG"
-	]
-]
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/rgrunt.mdl") = monster_robogrunt_repel : "Robot Grunt"
-[
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		1 : "MP5"
-		3 : "MP5 + HG"
-		5 : "M16 + GL"
-		8 : "Shotgun"
-		10 : "Shotgun + HG"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 48 =
-	[
-		48 : "repel_repel"
-	]
 ]
 
 @PointClass base(Weapon, Targetx, RenderFields) studio("models/w_satchel.mdl") = monster_satchel : "Live Satchel Charge" []
@@ -4607,19 +4005,6 @@
 	attackrange(integer) : "Max Attack Range" : 1200
 ]
 
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 36) studio("models/w_shock.mdl") = monster_shockroach : "Shock Roach" []
-
-@PointClass base(Monster) size(-24 -24 0, 24 24 32) studio("models/strooper.mdl") = monster_shocktrooper : "Shock Trooper"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-		1024: "No Shockroach" : 0
-	]
-]
-
 @PointClass base(Monster, TalkMonster) size(-14 -14 22, 14 14 72) studio("models/scientist.mdl") = monster_sitting_scientist : "Sitting Scientist"
 [
 	body(Choices) : "Body" : -1 =
@@ -4655,24 +4040,6 @@
 		0 : "Silo"
 		1 : "Dirt"
 		2 : "Water"
-	]
-]
-
-@PointClass base(Monster) size(-16 -16 0, 16 16 72) studio("models/hgrunt_torchf.mdl") = monster_torch_ally_repel : "Human Torch Ally (Repel)"
-[
-	netname(string) : "Squad Name"
-	spawnflags(Flags) =
-	[
-		32 : "SquadLeader" : 0
-	]
-	weapons(Choices) : "Weapons" : 1 =
-	[
-		1 : "Desert Eagle"
-		2 : "Blow Torch"
-	]
-	sequence(Choices) : "Animation Sequence (editor)" : 39 =
-	[
-		39 : "repel_repel"
 	]
 ]
 
@@ -6753,4 +6120,51 @@
 		4 : "Face Randomly" : 0
 		8 : "Non Solid" : 0
 	]
+]
+
+@PointClass color(192 255 0) = game_text : "HUD Text Message"
+[
+	targetname(target_source) : "Name"
+	target(target_destination) : "Target"
+	killtarget(target_destination) : "Kill Target"
+	delay(string) : "Delay Before Trigger" : "0"
+	spawnflags(flags) =
+	[
+		1: "All Players" : 0
+		2: "No console echo" : 0
+	]
+	x(string) : "X (0 - 1.0 = left to right) (-1 centers)" : "-1"
+	y(string) : "Y (0 - 1.0 = top to bottom) (-1 centers)" : "0.40"
+	effect(Choices) : "Text Effect" : 0 =
+	[
+		0 : "Fade In/Out"
+		1 : "Credits"
+		2 : "Scan Out"
+	]
+	color(color255) : "Color 1 (Add 4th number >0 for opaque)" : "100 100 100"
+	color2(color255) : "Color 2 (Add 4th number >0 for opaque)" : "240 110 0"
+	fadein(string) : "Fade in Time (or character scan time)" : "0.1"
+	fadeout(string) : "Fade Out Time" : "1.5"
+	holdtime(string) : "Hold Time" : "10.0"
+	fxtime(string) : "Scan time (scan effect only)" : "0.25"
+	channel(choices) : "Channel" : 1 =
+	[
+		1 : "1 Voices"
+		2 : "2 Voices"
+		3 : "3 Hud place"
+		4 : "4 messages"
+		5 : "5 messages"
+		6 : "6 messages"
+		7 : "7 IN USE"
+		8 : "8 IN USE"
+	]
+	master(string) : "Master"
+
+	message(string) : "MSG: Default/english"
+	message_spanish(string) : "MSG: Spanish"
+	message_portuguese(string) : "MSG: Portuguese"
+	message_german(string) : "MSG: Germany"
+	message_french(string) : "MSG: French"
+	message_italian(string) : "MSG: Italian"
+	message_esperanto(string) : "MSG: Esperanto"
 ]

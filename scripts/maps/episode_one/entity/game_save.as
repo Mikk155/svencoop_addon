@@ -1,3 +1,30 @@
+void RegisterTriggerAutoSave() 
+{
+	g_CustomEntityFuncs.RegisterCustomEntity( "game_save", "game_save" );
+	g_Hooks.RegisterHook( Hooks::Player::ClientPutInServer, @ClientPutInServer );
+}
+
+dictionary g_WhoSpawn;
+
+HookReturnCode ClientPutInServer( CBasePlayer@ pPlayer ) 
+{
+	string SteamID = g_EngineFuncs.GetPlayerAuthId(pPlayer.edict());
+
+	//g_Game.AlertMessage( at_console, 'El client se connecto correctamente.\n');
+
+	if( g_SurvivalMode.IsActive() && !g_WhoSpawn.exists(SteamID) )
+	{
+		//g_Game.AlertMessage( at_console, 'El surivival esta activado.\n');
+		g_WhoSpawn[SteamID] = @pPlayer;
+
+		//g_Game.AlertMessage( at_console, 'Guardando el SteamID... \n');
+
+		g_PlayerFuncs.RespawnPlayer(pPlayer, true, true);
+	}
+
+	return HOOK_CONTINUE;
+}
+
 enum GameSaveSaveFlags
 {
 	SF_GAMESAVE_OFF	= 1 << 0 // Iniciar apagado
@@ -100,7 +127,7 @@ class game_save : ScriptBaseEntity
 					g_IDPlayersAlt[SteamID] = @pPlayer; //Save the SteamID in the g_IDPlayersAlt dictionary
 
 					//Why we do that?
-					//Because this is the most easy way to no make an infinitive spawn cycle
+					//Because that's the easier way to prevent an infinitive spawn cycle
 				}
 			}
         }
@@ -127,7 +154,7 @@ class game_save : ScriptBaseEntity
 		SpawnCountHudText.fxTime = 0;
 		SpawnCountHudText.channel = 8;
 
-		g_PlayerFuncs.HudMessage(pPlayer, SpawnCountHudText, "Lives: " + (pData.touched-(pData.spawned-1)));
+		g_PlayerFuncs.HudMessage(pPlayer, SpawnCountHudText, "Spawns: " + (pData.touched-(pData.spawned-1)));
 	}
 
 	void SpawnHUDText( CBasePlayer@ pPlayer, PlayerKeepData@ pData )
@@ -149,7 +176,7 @@ class game_save : ScriptBaseEntity
 		SpawnHudText.fxTime = 0;
 		SpawnHudText.channel = 7;
 
-		g_PlayerFuncs.HudMessage(pPlayer, SpawnHudText, "Press the 'Use' or 'Primary Attack' key to activate the spawn");
+		g_PlayerFuncs.HudMessage(pPlayer, SpawnHudText, "Press the 'Use' or 'Primary Attack' key to respawn");
 	}
 
 	PlayerKeepData@ GetPlayerSpawn(CBasePlayer@ pPlayer)
@@ -164,9 +191,4 @@ class game_save : ScriptBaseEntity
 
 		return cast<PlayerKeepData@>( g_SpawnNumber[SteamID] );
 	}
-}
-
-void RegisterTriggerGameSave() 
-{
-	g_CustomEntityFuncs.RegisterCustomEntity( "game_save", "game_save" );
 }
