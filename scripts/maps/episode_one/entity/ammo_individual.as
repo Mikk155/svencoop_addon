@@ -49,6 +49,7 @@ void RegisterAmmoIndividual()
 	DefaultRegister( "item_battery_individual" );
 	DefaultRegister( "item_healthkit_individual" );
 	DefaultRegister( "weaponbox_individual" );
+	//DefaultRegister( "func_recharge_individual" );
 }
 
 void AmmoIndividualRemap()
@@ -74,7 +75,63 @@ void AmmoIndividualRemap()
 	Reemplazar( "weapon_tripmine", "ammo_tripmine_individual" );
 	Reemplazar( "item_battery", "item_battery_individual" );
 	Reemplazar( "item_healthkit", "item_healthkit_individual" );
+	//Reemplazar( "func_recharge_individual", "func_recharge_individual" );
 }
+
+/*class func_recharge_individual : ScriptBasePlayerItemEntity
+{
+	private bool Activated = true;
+	dictionary g_MaxPlayers;
+
+	void Spawn()
+	{ 
+		Precache();
+
+		g_EntityFuncs.SetOrigin( self, self.pev.origin ); // set size and link into world
+		g_EntityFuncs.SetSize( self.pev, self.pev.mins, self.pev.maxs );
+		g_EntityFuncs.SetModel( self, self.pev.model );
+
+        if( self.pev.SpawnFlagBitSet( SF_AI_START_OFF )  )
+		{	
+            Activated = false;
+		}
+
+		self.pev.frame = 0;
+		
+		BaseClass.Spawn();
+	}
+
+	void Precache()
+	{
+		BaseClass.Precache();
+
+		g_SoundSystem.PrecacheSound( "items/suitcharge1.wav" );
+		g_SoundSystem.PrecacheSound( "items/suitchargeno1.wav" );
+		g_SoundSystem.PrecacheSound( "items/suitchargeok1.wav" );
+	}
+
+	void Use( CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float value )
+	{
+		// asignar custom keyvalue "$i_suitpower" = 0 solo una vez.
+
+		if ( // si su steamid ya esta asignada ignorar. )
+		{
+			g_SoundSystem.EmitSound( self.edict(), CHAN_ITEM, "items/suitchargeno1.wav", 1.0, ATTN_NORM );
+		}
+		else{
+			if( // Si su custom keyvalue es menor a 100 lo recargaremos y aumentaremos su keyvalue por cada 1 de traje que se le suba.)
+			{
+				// recargar hev pPlayer.pev.armorvalue = pPlayer.pev.armorvalue;
+			}
+			else if(// Si su custom keyvalue es = 100 se asigna su steamid a ya usados)
+			{ // asignar su steamid a ya usados.
+				string steamId = g_EngineFuncs.GetPlayerAuthId(pPlayer.edict());
+			
+				g_MaxPlayers[steamId] = @pPlayer;
+			}
+		}
+	}
+}*/
 
 class weaponbox_individual : ScriptBasePlayerItemEntity, ammo_base
 {	

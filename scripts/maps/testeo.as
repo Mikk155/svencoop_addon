@@ -1,6 +1,6 @@
-#include "test"
+#include "episode_one/weapons/CFlareBase"
 
 void MapInit()
 {
-	RegisterTest();
+	CFlareBaseRegister();
 }

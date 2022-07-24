@@ -104,10 +104,17 @@
 	rendercolor(color255) : "FX Color (R G B)" : "255 0 0"
 	
 	// Define if add Sprites to the player
-	AttachSprites(sprite) : "Sprite Name" : "sprites/glow01.spr"
+	AttachSprites(sprite) : "Sprite to Attach"
 	
 	// Player's speed modifier. 0 = dont change
     Speedmodifier(string) : "Speed modifier" : "0"
+	
+	// Define if the entity will create a toxic cloud. used for spore enemies
+    ToxicCloud(choices) : "Beam Entity-to-player" : 0 =
+    [
+        0 : "No Toxic cloud"
+        1 : "Toxic cloud"
+    ]
 	
     spawnflags(flags) =
     [

@@ -14,7 +14,7 @@ const string EntFileLoad = "multi_language/localizations/" + string( g_Engine.ma
 #include "../entity/trigger_inout"
 
 // Multi-Language game_text entity.
-#include "../../multi_language/game_text_custom"
+#include "../entity/game_text_custom"
 
 // HLSP AMMUNITION
 #include "../entity/ammo_individual"

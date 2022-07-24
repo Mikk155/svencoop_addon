@@ -20,6 +20,7 @@ class env_hurtzone : ScriptBaseEntity
 	private int m_ilFadeScreen		= 0;
 	private int m_ilGlowPlayers 	= 0;
 	private int m_ilSpeedModifier 	= 0;
+	private int m_ilToxicCloud	 	= 0;
 	private string m_slPlaySound	= "";
 	private string m_ilAttachSpr	= "";
 	private bool toggle 			= true;
@@ -78,6 +79,11 @@ class env_hurtzone : ScriptBaseEntity
         else if( szKey == "speedmodifier" || szKey == "Speedmodifier"  )
         {
             m_ilSpeedModifier = atoi( szValue );
+            return true;
+        }
+        else if( szKey == "toxiccloud" || szKey == "ToxicCloud"  )
+        {
+            m_ilToxicCloud = atoi( szValue );
             return true;
         }
 		else if( szKey == "sound" || szKey == "sounds" )
@@ -215,6 +221,16 @@ class env_hurtzone : ScriptBaseEntity
                     pPlayer.GiveAmmo( m_ilValue, m_slAmmoType, pPlayer.GetMaxAmmo( m_slAmmoType ) );
                     pPlayer.TakeDamage( self.pev, self.pev, 0 * 0.0, DMG_RADIATION );
                 }
+			
+
+				if( m_ilToxicCloud > 1 ) // Make a toxic cloud
+				{
+					NetworkMessage message( MSG_PVS, NetworkMessages::ToxicCloud );
+					message.WriteCoord( self.pev.origin.x );
+					message.WriteCoord( self.pev.origin.y );
+					message.WriteCoord( self.pev.origin.z );
+					message.End();
+				}
             }
             else
             {
@@ -254,6 +270,15 @@ class env_hurtzone : ScriptBaseEntity
 					g_EntityFuncs.SetOrigin( self, pSource.Center());
 					Find = true;
 					return;	
+				}
+
+				if( pSource.takedamage )
+				{
+					NetworkMessage message( MSG_PVS, NetworkMessages::ToxicCloud );
+					message.WriteCoord( self.pev.origin.x );
+					message.WriteCoord( self.pev.origin.y );
+					message.WriteCoord( self.pev.origin.z );
+					message.End();
 				}
 			}
 			else

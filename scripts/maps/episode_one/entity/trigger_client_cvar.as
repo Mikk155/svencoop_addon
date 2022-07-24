@@ -1,3 +1,7 @@
+/*
+	This script will force the activator (or all players if spawnflag 1 is set) to execute a command. worry not. some cvars are blocked such as "say"
+	i've use this for make players use their flashlight, drop their weapons etc. simple cvars that could be done client-side.
+*/
 enum trigger_client_cvar_flag
 {
 	SF_CVAR_ALL_PLAYERS = 1 << 0

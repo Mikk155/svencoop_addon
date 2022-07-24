@@ -2,7 +2,7 @@
 const string EntFileLoad = "multi_language/localizations/" + string( g_Engine.mapname ) + ".ent";
 
 // Multi-Language game_text entity.
-#include "../../multi_language/game_text_custom"
+#include "../entity/game_text_custom"
 
 void MapInit()
 {
