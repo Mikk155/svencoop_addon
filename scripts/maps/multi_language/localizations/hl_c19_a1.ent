@@ -26,6 +26,14 @@
 }
 "entity"
 {
+"classname" "trigger_relay"
+"delay" "5"
+"targetname" "game_playerjoin"
+"target" "Subtitless_Credits"
+"spawnflags" "64"
+}
+"entity"
+{
 "classname" "game_text_custom"
 "channel" "6"
 "fxtime" "0.25"

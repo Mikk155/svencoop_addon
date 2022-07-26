@@ -76,7 +76,7 @@ class trigger_inout : ScriptBaseEntity
 			if( pPlayer is null || !pPlayer.IsConnected() || !pPlayer.IsAlive() )
 				continue;
 
-			if( !/*UtilEnts::*/Inside( pPlayer ) ) 
+			if( !Inside( pPlayer ) ) 
 			{
 				playersTrigger = playersTrigger + 1.0f;
 			}
@@ -84,7 +84,6 @@ class trigger_inout : ScriptBaseEntity
 			{
 				if( !m_blInside )
 				{
-					//g_Game.AlertMessage(at_console, "Jugador " +pPlayer.pev.netname+ " Dentro :D\n"); 
 					self.SUB_UseTargets( @self, USE_TOGGLE, 0 );
 					m_blInside = true;
 				}
@@ -98,8 +97,6 @@ class trigger_inout : ScriptBaseEntity
 
 				if( currentPercentage >= 1.00 && m_blInside ) 
 				{
-					//g_Game.AlertMessage(at_console, "Número de jugadores afuera trigereando: " +playersTrigger+ "\n"); 
-					//g_Game.AlertMessage(at_console, "Todos los jugadores estan afuera :C\n"); 
 					self.SUB_UseTargets( @self, USE_TOGGLE, 0 );
 					m_blInside = false;
 				}
@@ -108,22 +105,6 @@ class trigger_inout : ScriptBaseEntity
 
 		self.pev.nextthink = g_Engine.time + 0.1f;
 	}
-
-/*	bool Inside(CBasePlayer@ pPlayer)
-	{
-		bool a = true;
-		a = a && pPlayer.pev.origin.x + pPlayer.pev.maxs.x >= self.pev.origin.x + self.pev.mins.x;
-		a = a && pPlayer.pev.origin.y + pPlayer.pev.maxs.y >= self.pev.origin.y + self.pev.mins.y;
-		a = a && pPlayer.pev.origin.z + pPlayer.pev.maxs.z >= self.pev.origin.z + self.pev.mins.z;
-		a = a && pPlayer.pev.origin.x + pPlayer.pev.mins.x <= self.pev.origin.x + self.pev.maxs.x;
-		a = a && pPlayer.pev.origin.y + pPlayer.pev.mins.y <= self.pev.origin.y + self.pev.maxs.y;
-		a = a && pPlayer.pev.origin.z + pPlayer.pev.mins.z <= self.pev.origin.z + self.pev.maxs.z;
-
-		if(a)
-			return true;
-		else
-			return false;
-	}*/
 	
 	bool Inside(CBasePlayer@ pPlayer)	
 	{

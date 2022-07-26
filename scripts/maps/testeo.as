@@ -1,6 +1,6 @@
-#include "episode_one/weapons/CFlareBase"
+#include "test"
 
 void MapInit()
 {
-	CFlareBaseRegister();
+	MonsterNihilanth::Register();
 }

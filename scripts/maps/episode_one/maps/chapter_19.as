@@ -4,6 +4,9 @@ const string EntFileLoad = "multi_language/localizations/" + string( g_Engine.ma
 // Count players and enable survival.
 #include "../misc/player_count"
 
+// Creates a blood puddle when npcs die
+#include "../misc/bloodpuddle"
+
 // Checkpoints & Player's lives
 #include "../entity/game_save"
 
@@ -28,9 +31,15 @@ const string EntFileLoad = "multi_language/localizations/" + string( g_Engine.ma
 // trigger per percentage of players specified.
 #include "../entity/trigger_once_mp"
 
+// Cxen entities modified a bit.
+#include "../entity/Cxen_prop"
+#include "../entity/Cxen_tree"
+#include "../entity/xen_plantlight_switch"
+
 void MapInit()
 {
 	InitializePlayersCount();
+	RegisterBloodPuddle();
 	RegisterTriggerAutoSave();
 	RegisterEnvHurtZone();
 	RegisterTriggerInOut();
@@ -39,6 +48,10 @@ void MapInit()
 	RegisterGamePopupEntity();
 	RegisterZoneCaller();
 	RegisterAntiRushEntity();
+	
+	CXenProp::Register();
+	CXenTree::Register();
+	plantlight_switch::Register();
 }
 
 void MapActivate()

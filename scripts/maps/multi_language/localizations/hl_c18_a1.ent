@@ -104,8 +104,8 @@
 "spawnflags" "1"
 "x" "-1"
 "targetname" "ChapterTitleGman"
-"message_spanish" "Prologo: Gman"
-"message" "Prologue: Gman"
+"message_spanish" "Capitulo 18: Gman"
+"message" "Chapter 18: Gman"
 }
 "entity"
 {

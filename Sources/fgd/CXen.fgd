@@ -1,0 +1,148 @@
+@PointClass size(-8 -8 0, 8 8 32 ) studio() = xen_custom_prop : "Xen Props"
+[
+	targetname(target_source) : "Name"
+	angles(string) : "Pitch Yaw Roll (X Y Z)" : "0 0 0"
+	rendermode(choices) : "Render Mode" : 0 =
+	[
+		0: "Normal"
+		1: "Color"
+		2: "Texture"
+		3: "Glow"
+		4: "Solid"
+		5: "Additive"
+	]
+	renderamt(integer) : "FX Amount (1 - 255)"
+	rendercolor(color255) : "FX Color (R G B)" : "0 0 0"
+	renderfx(choices) : "Render FX" : 0 =
+	[
+		0: "Normal"
+		1: "Slow Pulse"
+		2: "Fast Pulse"
+		3: "Slow Wide Pulse"
+		4: "Fast Wide Pulse"
+		9: "Slow Strobe"
+		10: "Fast Strobe"
+		11: "Faster Strobe"
+		12: "Slow Flicker"
+		13: "Fast Flicker"
+		5: "Slow Fade Away"
+		6: "Fast Fade Away"
+		7: "Slow Become Solid"
+		8: "Fast Become Solid"
+		14: "Constant Glow"
+		15: "Distort"
+		16: "Hologram (Distort + fade)"
+		17: "Dead Player (DONT USE!)"
+		18: "Explode (Garg Like)"
+		19: "Glow Shell"
+		20: "ClampMinScale (Sprites)"
+	]
+	spawnflags(Flags) =
+	[
+		1 : "Sync Movement" : 0
+	]
+	model(studio) : "Custom Model" : "models/hair.mdl"
+	skin(integer) : "Skin" : 0
+	scale(string) : "Scale Model" : "1"
+	message(sound) : "Sound File"
+
+	minhullsize(string) : "Custom Min Hull Size (X Y Z)" : "0 0 0"
+	maxhullsize(string) : "Custom Max Hull Size (X Y Z)" : "0 0 0"
+
+	// Custom sound para Touch()
+]
+
+@PointClass size(-48 -48 0, 48 48 32 ) studio() = xen_plantlight_switch : "Xen Plant Light"
+[
+	targetname(target_source) : "Name"
+	target(target_destination) : "Target"
+	angles(string) : "Pitch Yaw Roll (X Y Z)" : "0 0 0"
+	rendermode(choices) : "Render Mode" : 0 =
+	[
+		0: "Normal"
+		1: "Color"
+		2: "Texture"
+		3: "Glow"
+		4: "Solid"
+		5: "Additive"
+	]
+	renderamt(integer) : "FX Amount (1 - 255)"
+	rendercolor(color255) : "FX Color (R G B)" : "0 0 0"
+	renderfx(choices) : "Render FX" : 0 =
+	[
+		0: "Normal"
+		1: "Slow Pulse"
+		2: "Fast Pulse"
+		3: "Slow Wide Pulse"
+		4: "Fast Wide Pulse"
+		9: "Slow Strobe"
+		10: "Fast Strobe"
+		11: "Faster Strobe"
+		12: "Slow Flicker"
+		13: "Fast Flicker"
+		5: "Slow Fade Away"
+		6: "Fast Fade Away"
+		7: "Slow Become Solid"
+		8: "Fast Become Solid"
+		14: "Constant Glow"
+		15: "Distort"
+		16: "Hologram (Distort + fade)"
+		17: "Dead Player (DONT USE!)"
+		18: "Explode (Garg Like)"
+		19: "Glow Shell"
+		20: "ClampMinScale (Sprites)"
+	]
+	model(studio) : "Custom Model" : "models/light.mdl"
+	skin(integer) : "Skin" : 0
+
+	minhullsize(string) : "Custom Min Hull Size (X Y Z)" : "0 0 0"
+	maxhullsize(string) : "Custom Max Hull Size (X Y Z)" : "0 0 0"
+	
+	sprite_model(sprite) : "Sprite" : "sprites/mikk/episode_one/glow/glow_00.spr"
+]
+
+@PointClass size(-24 -24 0, 24 24 188 ) studio() = xen_custom_tree : "Xen Tree"
+[
+	targetname(target_source) : "Name"
+	angles(string) : "Pitch Yaw Roll (X Y Z)" : "0 0 0"
+	rendermode(choices) : "Render Mode" : 0 =
+	[
+		0: "Normal"
+		1: "Color"
+		2: "Texture"
+		3: "Glow"
+		4: "Solid"
+		5: "Additive"
+	]
+	renderamt(integer) : "FX Amount (1 - 255)"
+	rendercolor(color255) : "FX Color (R G B)" : "0 0 0"
+	renderfx(choices) : "Render FX" : 0 =
+	[
+		0: "Normal"
+		1: "Slow Pulse"
+		2: "Fast Pulse"
+		3: "Slow Wide Pulse"
+		4: "Fast Wide Pulse"
+		9: "Slow Strobe"
+		10: "Fast Strobe"
+		11: "Faster Strobe"
+		12: "Slow Flicker"
+		13: "Fast Flicker"
+		5: "Slow Fade Away"
+		6: "Fast Fade Away"
+		7: "Slow Become Solid"
+		8: "Fast Become Solid"
+		14: "Constant Glow"
+		15: "Distort"
+		16: "Hologram (Distort + fade)"
+		17: "Dead Player (DONT USE!)"
+		18: "Explode (Garg Like)"
+		19: "Glow Shell"
+		20: "ClampMinScale (Sprites)"
+	]
+	model(studio) : "Custom Model" : "models/tree.mdl"
+	skin(integer) : "Skin" : 0
+
+	minhullsize(string) : "Custom Min Hull Size (X Y Z)" : "0 0 0"
+	maxhullsize(string) : "Custom Max Hull Size (X Y Z)" : "0 0 0"
+]

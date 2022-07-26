@@ -1,0 +1,8 @@
+@SolidClass = trigger_once_individual : "trigger once per player"
+[
+	target(target_destination) : "Target"
+	spawnflags(flags) =
+	[
+		1: "Start Off" : 0
+	]
+]

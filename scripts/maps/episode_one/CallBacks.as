@@ -1,12 +1,45 @@
 /* ====================================================================================== */
 /*
-	CallBack for spawning enemies around players. used in nihilanth's battle
-	
-	Plugin by Rick: https://github.com/RedSprend/svencoop_plugins/blob/master/svencoop/scripts/plugins/atele.as
+	CallBack for trolling players
 	
 	mode: Think
 */
-/* -------------------------------------------------------------------------------------- */
+/* ====================================================================================== */
+void pPlayersFlashlight(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float value)
+{
+	for( int playerID = 1; playerID <= g_PlayerFuncs.GetNumPlayers(); playerID++ )
+	{
+		CBasePlayer@ pPlayer = g_PlayerFuncs.FindPlayerByIndex( playerID );
+
+		if( pPlayer is null || !pPlayer.IsConnected() || !pPlayer.IsAlive() )
+			continue;
+		if( pPlayer.m_iFlashBattery >= 30)
+		{
+			pPlayer.m_iFlashBattery = 29;
+		}
+		if( pPlayer.FlashlightIsOn() )
+		{
+			pPlayer.FlashlightTurnOff();
+			pPlayer.m_iFlashBattery = 1;
+		}
+		if( pPlayer.pev.armorvalue < pPlayer.pev.armortype )
+		{
+			pPlayer.pev.armorvalue = pPlayer.pev.armorvalue - 3;
+			g_SoundSystem.PlaySound( pPlayer.edict(), CHAN_STATIC, "fvox/hev_critical_fail.wav", 1.0f, 1.0f, 0, PITCH_NORM );
+		}
+		
+	}
+
+}
+/* ====================================================================================== */
+/*
+	CallBack for spawning enemies around players. used in nihilanth's battle
+	
+	Code by Rick: https://github.com/RedSprend/svencoop_plugins/blob/master/svencoop/scripts/plugins/atele.as
+	
+	mode: Think
+*/
+/* ====================================================================================== */
 void n_CallMonsters( CBaseEntity@ ){
 	int iPlayerIndex = GetRandomPlayer();
 	if( iPlayerIndex == -1)
