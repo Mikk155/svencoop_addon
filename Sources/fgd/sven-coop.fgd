@@ -5613,6 +5613,7 @@
 
 @PointClass base(Item, CustomRespawnDelay) studio("models/w_weaponbox.mdl") = weaponbox : "Weapon/Ammo Container"
 [
+	model(studio) : "Custom Model" : "models/mikk/episode_one/misc/weaponbox.mdl"
 	bullet9mm(integer) : "Packed 9mm rounds"
 	bullet357(integer) : "Packed 357 rounds"
 	buckshot(integer) : "Packed shotgun shells"

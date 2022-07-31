@@ -1,114 +1,176 @@
-//
-// Author: Gaftherman
-// Taken and ported from: https://github.com/SamVanheer/halflife-updated/blob/master/dlls/rat.cpp
-//
-// ===================================
-//
-// Why is this here?
-// 1.- I use it as a base to create enemies.
-// 2.- Do not really expect more point for which I stand out because I did it.
-//
-// Usage: In your map script include this
-//	#include "../monster_rat_custom"
-// and in your MapInit() {...}
-//	"MonsterNihilanth::Register();"
-//
-// ===================================
-//
+/*
+* trigger_once_mp
+* Point Entity / Solid Entity
+* Variable Hullsize and percentage of living people
+*
+*	Original Script by Cubemath, Modified by Mikk & Gaftherman
+*/
 
-namespace MonsterNihilanth
+enum trigger_once_flag
 {
-	//=========================================================
-	// Monster's Anim Events Go Here
-	//=========================================================
+    SF_START_OFF = 1 << 0
+}
 
-	class CNihilanth : ScriptBaseMonsterEntity
+class antirush : ScriptBaseEntity 
+{
+	private float m_flPercentage = 0.5f; //Percentage of living people to be inside trigger to trigger
+	private float delayreset		= 0.0;
+	private killtarget;
+	
+	bool KeyValue( const string& in szKey, const string& in szValue ) 
 	{
-		//=========================================================
-		// Classify - indicates this monster's place in the 
-		// relationship table.
-		//=========================================================
-		int	Classify()
+		if( szKey == "m_flPercentage"/* Only for legacy */ || "count" ) 
 		{
-			return	self.GetClassification( CLASS_ALIEN_MILITARY );
+			m_flPercentage = atof( szValue );
+			return true;
+		} 
+		else if( szKey == "minhullsize" ) 
+		{
+			g_Utility.StringToVector( self.pev.vuser1, szValue );
+			return true;
+		} 
+		else if( szKey == "maxhullsize" ) 
+		{
+			g_Utility.StringToVector( self.pev.vuser2, szValue );
+			return true;
+		} 
+        else if( szKey == "killtarget" /* Why this isn't a default key? */ )
+		{
+            killtarget = szValue;
+			return true;
+		}
+        else if( szKey == "delayreset" /* only for legacy, use spawnflag 1 instead */)
+		{
+            delayreset = szValue;
+			return true;
+		}
+		else 
+			return BaseClass.KeyValue( szKey, szValue );
+	}
+	
+	void Spawn() 
+	{
+        self.Precache();
+
+        self.pev.movetype = MOVETYPE_NONE;
+        self.pev.solid = SOLID_NOT;
+
+        // self.pev.effects |= EF_NODRAW;
+
+		g_EntityFuncs.SetSize( self.pev, self.pev.vuser1, self.pev.vuser2 );
+		
+		CreateWall();
+
+        if( !self.pev.SpawnFlagBitSet( SF_START_OFF ) )
+		{
+			SetThink( ThinkFunction( this.TriggerThink ) );
+			self.pev.nextthink = g_Engine.time + 0.1f;
 		}
 
-		//=========================================================
-		// SetYawSpeed - allows each sequence to have a different
-		// turn rate associated with it.
-		//=========================================================
-		void SetYawSpeed()
+        BaseClass.Spawn();
+	}
+	
+	void CreateWall()
+	{
+		dictionary values;
+		values ["origin"]				= "" + self.GetOrigin().ToString();
+		values ["model"]				= "" + self.pev.model;
+		values ["targetname"]			= "" + self.pev.target;
+		values ["rendermode"]			= "4";
+		values ["renderamt"]			= "0";
+
+		g_EntityFuncs.CreateEntity( "func_wall_toggle", values, true );
+	}
+	
+    void Use(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE useType, float value)
+    {
+        if( self.pev.SpawnFlagBitSet( SF_START_OFF ) )
+		{	
+			SetThink( ThinkFunction( this.TriggerThink ) );
+			self.pev.nextthink = g_Engine.time + 0.1f;
+		}
+	}
+	
+	void TriggerThink() 
+	{
+		float TotalPlayers = 0, PlayersTrigger = 0, CurrentPercentage = 0;
+
+		for( int iPlayer = 1; iPlayer <= g_PlayerFuncs.GetNumPlayers(); ++iPlayer )
 		{
-			int ys;
+			CBasePlayer@ pPlayer = g_PlayerFuncs.FindPlayerByIndex( iPlayer );
+				
+			if( pPlayer is null || !pPlayer.IsConnected() || !pPlayer.IsAlive() )
+				continue;
 
-			switch ( self.m_Activity )
+			if( Inside( pPlayer ) )
+				PlayersTrigger = PlayersTrigger + 1.0f;
+					
+			TotalPlayers = TotalPlayers + 1.0f;	
+		}
+				
+		if(TotalPlayers > 0) 
+		{
+			CurrentPercentage = PlayersTrigger / TotalPlayers + 0.00001f;
+
+			for( int iPlayer = 1; iPlayer <= g_PlayerFuncs.GetNumPlayers(); ++iPlayer )
 			{
-				case ACT_IDLE:
+				CBasePlayer@ pPlayer = g_PlayerFuncs.FindPlayerByIndex( iPlayer );
 
-				default: ys = 45; break;
+				if( pPlayer is null || !pPlayer.IsConnected() || !pPlayer.IsAlive() )
+					continue;
+
+				if( Inside( pPlayer ) )
+					g_PlayerFuncs.ClientPrint(pPlayer, HUD_PRINTCENTER,"ANTI-RUSH: (" +int(m_flPercentage*100)+ "%%) needed to finish.\n Percent now (" +int(CurrentPercentage*100)+ "%%)" + "\n");
 			}
 
-			self.pev.yaw_speed = ys;
-		}
-
-		//=========================================================
-		// Spawn
-		//=========================================================
-		void Spawn()
-		{
-			Precache( );
-
-			g_EntityFuncs.SetModel( self, "models/nihilanth.mdl");
-			g_EntityFuncs.SetSize( self.pev, Vector( -32, -32, 0 ), Vector( 32, 32, 64 ) );
-
-			pev.solid				= SOLID_BBOX;
-			pev.movetype			= MOVETYPE_FLY;
-			pev.flags 				!= FL_MONSTER;
-			pev.view_ofs			= Vector ( 0, 0, 300 );	// position of the eyes relative to monster's origin.
-			pev.takedamage			= DAMAGE_AIM;
-			
-			self.m_bloodColor		= BLOOD_COLOR_YELLOW;
-			self.m_FormattedName	= "Nihilanth";
-			self.m_flFieldOfView	= -1;	// 360 degrees
-			
-			if( self.pev.health != "" )
-			{
-				self.pev.health += int(g_EngineFuncs.CVarGetFloat( "sk_nihilanth_health" ));
+			if( CurrentPercentage >= m_flPercentage ) 
+			{			
+				if( killtarget != "" && killtarget != self.GetTargetname() )
+				{
+					do g_EntityFuncs.Remove( g_EntityFuncs.FindEntityByTargetname( null, killtarget ) );
+					while( g_EntityFuncs.FindEntityByTargetname( null, killtarget ) !is null );
+				}
+				
+				if( delayreset >= 0 )
+				{
+					SetThink( null );
+					g_Scheduler.SetTimeout( this, "ResetValues", delayreset );
+				}
+				else
+				{
+					g_EntityFuncs.Remove( self );
+				}
+				self.SUB_UseTargets( @self, USE_TOGGLE, 0 );
 			}
-			
-			
-			self.m_MonsterState		= MONSTERSTATE_NONE;
-
-
-			self.MonsterInit();
 		}
 
-		//=========================================================
-		// Precache - precaches all resources this monster needs
-		//=========================================================
-		void Precache()
-		{
-			g_Game.PrecacheModel("models/nihilanth.mdl");
-			g_Game.PrecacheGeneric( "models/nihilanth.mdl" );
-			
-			g_Game.PrecacheModel("sprites/lgtning.spr");
-			g_Game.PrecacheGeneric( "sprites/lgtning.spr" );
-			
-			g_Game.PrecacheOther( "nihilanth_energy_ball" );
-			g_Game.PrecacheOther( "monster_alien_controller" );
-			g_Game.PrecacheOther( "monster_alien_slave" );
-			
-			g_SoundSystem.PrecacheSound( "debris/beamstart7.wav" );
-			g_Game.PrecacheGeneric( "debris/beamstart7.wav" );
-		}	
-
-		//=========================================================
-		// AI Schedules Specific to this monster
-		//=========================================================
+		self.pev.nextthink = g_Engine.time + 0.1f;
 	}
-
-	void Register()
+	
+	void(ResetValues)
 	{
-		g_CustomEntityFuncs.RegisterCustomEntity("MonsterNihilanth::CNihilanth", "monster_nihilanth_custom");
+		SetThink( ThinkFunction( this.TriggerThink ) );
+		self.pev.nextthink = g_Engine.time + 0.1f;
 	}
+
+	bool Inside(CBasePlayer@ pPlayer)
+	{
+		bool a = true;
+		a = a && pPlayer.pev.origin.x + pPlayer.pev.maxs.x >= self.pev.origin.x + self.pev.mins.x;
+		a = a && pPlayer.pev.origin.y + pPlayer.pev.maxs.y >= self.pev.origin.y + self.pev.mins.y;
+		a = a && pPlayer.pev.origin.z + pPlayer.pev.maxs.z >= self.pev.origin.z + self.pev.mins.z;
+		a = a && pPlayer.pev.origin.x + pPlayer.pev.mins.x <= self.pev.origin.x + self.pev.maxs.x;
+		a = a && pPlayer.pev.origin.y + pPlayer.pev.mins.y <= self.pev.origin.y + self.pev.maxs.y;
+		a = a && pPlayer.pev.origin.z + pPlayer.pev.mins.z <= self.pev.origin.z + self.pev.maxs.z;
+
+		if(a)
+			return true;
+		else
+			return false;
+	}
+}
+
+void RegisterTriggerOnceMpEntity() 
+{
+	g_CustomEntityFuncs.RegisterCustomEntity( "antirush", "antirush" );
 }

@@ -1,0 +1,34 @@
+//========================================
+//
+//	This file lists all plugins that are loaded by the game
+//	Plugins use Angelscript
+//
+//========================================
+"plugins"
+{	
+	
+	"plugin"
+	{
+		"name" "AFBase"
+		"script" "AFBase"
+	}
+	
+	"plugin"
+	{
+		"name" "Multi-Language"
+		"script" "multi_language"
+	}
+	
+	"plugin"
+	{
+		"name" "RCBot"
+		"script" "BotManager/BotManager"
+		"concommandns" "rcbot"
+	}
+	
+	"plugin"
+	{
+		"name" "UseOnly"
+		"script" "UseOnly"
+	}
+}

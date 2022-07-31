@@ -45,7 +45,7 @@ class blood : ScriptBaseAnimating
         self.pev.solid = SOLID_NOT;
 		self.pev.scale = Math.RandomFloat( 1.5, 2.5 );
 
-        g_EntityFuncs.SetModel(self, "models/bloodpuddle.mdl");
+        g_EntityFuncs.SetModel(self, "models/mikk/misc/bloodpuddle.mdl");
         g_EntityFuncs.SetOrigin(self, self.pev.origin);
 		self.pev.sequence = 2;
 
@@ -55,7 +55,7 @@ class blood : ScriptBaseAnimating
 
 	void Precache()
 	{
-		g_Game.PrecacheModel( "models/bloodpuddle.mdl" );
+		g_Game.PrecacheModel( "models/mikk/misc/bloodpuddle.mdl" );
 
         BaseClass.Precache();
     }

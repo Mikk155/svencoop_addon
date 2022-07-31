@@ -30,7 +30,7 @@
 	]
 ]
 
-@PointClass base(Ammo) studio("models/mikk/episode_one/misc/weaponbox.mdl") = weaponbox_individual : "weaponbox" 
+@PointClass base(Ammo) studio() = weaponbox_individual : "weaponbox" 
 [
 	// Note that keyvalues do not defines the clips.
 	// They defines the bullets. so if you set uranium -> 1
@@ -51,6 +51,7 @@
 	sporeclip : "sporeclip"
 	TM : "Trip Mine"
 	HG : "Hand Grenade"
+	model(studio) : "Custom Model" : "models/mikk/episode_one/misc/weaponbox.mdl"
 ]
 
 @PointClass base(Ammo) studio("models/w_357ammobox.mdl") = ammo_357_individual : "357 / desert eagle round box" []

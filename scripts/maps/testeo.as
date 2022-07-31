@@ -1,6 +1,6 @@
-#include "test"
+#include "CBaseFlare"
 
 void MapInit()
 {
-	MonsterNihilanth::Register();
+	RegisterBnegal();
 }

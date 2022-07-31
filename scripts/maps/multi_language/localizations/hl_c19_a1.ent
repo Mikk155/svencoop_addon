@@ -19,6 +19,13 @@
 }
 "entity"
 {
+"message" "A Geiger noises comes from that mushroom. They could be radioactive."
+"message_spanish" "Sonidos de [PLACEHOLDER] vienen de esos hongos. Podrian ser radioactivos."
+"targetname" "GamePopupPoison"
+"classname" "game_popup"
+}
+"entity"
+{
 "message" "Those spores appear to be releasing a possibly toxic gas."
 "message_spanish" "Esas esporas parecen estar liberando un gas posiblemente toxico."
 "targetname" "call_popup_spores"

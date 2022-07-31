@@ -13,6 +13,7 @@ void pPlayersFlashlight(CBaseEntity@ pActivator, CBaseEntity@ pCaller, USE_TYPE 
 
 		if( pPlayer is null || !pPlayer.IsConnected() || !pPlayer.IsAlive() )
 			continue;
+
 		if( pPlayer.m_iFlashBattery >= 30)
 		{
 			pPlayer.m_iFlashBattery = 29;
